@@ -1,9 +1,8 @@
-require('env2')('.env');
 const app = require('./app');
 
-const PORT = app.get('port');
+const port = app.get('port');
 
-app.listen(PORT, () => {
+app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log(`server is running at http://localhost:${PORT}`);
+  console.log(`server is running at http://localhost:${port}`);
 });
