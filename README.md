@@ -19,15 +19,15 @@ A site that is a real estate broker to facilitate communication and negotiation 
 
 * #####  AS a USER I can :
     1. see a group of houses or real estate with more details (Home page).
-    2. Sign up for the app.
-    3. login in to the app.
     4. see specific information about any house.
     5. add houses to my favorite list.
     6. AS a USER want to search by different locations, prices, and the number of rooms in the house
 
-* #### AS a Host I can :
-    1. able to hosting the house or room.
-    2. need control panel to manage my houses.
+* #### AS a agent I can :
+    1. Sign up for the app.
+    2. login in to the app.
+    3. able to hosting the house or room.
+    4. need control panel to manage my houses.
 
 * #### AS a admin I can :
     1. approve estate 
