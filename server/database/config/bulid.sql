@@ -9,11 +9,11 @@ CREATE TABLE admins(
 CREATE TABLE agents(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    email VARCHAR(255)  UNIQUE,
+    email VARCHAR(255) NOT NULL  UNIQUE,
+    password VARCHAR(255) NOT NULL,
     phone VARCHAR(255) NOT NULL UNIQUE,
-    image TEXT,
-    location VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    avater TEXT
+    
 );
 CREATE TABLE estates(
     id SERIAL PRIMARY KEY,
