@@ -1,0 +1,1 @@
+const signupControllers = require('../controllers/users/signup');
