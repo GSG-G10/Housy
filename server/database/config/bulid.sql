@@ -40,4 +40,6 @@ CREATE TABLE images(
     estate_id INTEGER REFERENCES estates(id) ON DELETE CASCADE,
     image TEXT 
 );
+
+
 COMMIT;
