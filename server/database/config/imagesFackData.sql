@@ -1,6 +1,40 @@
-insert into images ( estate_id, image) values (148,'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
-insert into images ( estate_id, image) values (93, 'https://cdn.archilovers.com/projects/57d7daff-e586-4a1b-83b3-8d5bf0f8e070.jpg');
-insert into images ( estate_id, image) values (107, 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2UlMjBpbnRlcmlvcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
-insert into images ( estate_id, image) values (34, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgICbcCNuDBzMfR9fpdh0z-na1sAcEqI4tDQAyx2rnCteciKKUIIp4DoWfj1crDydSMEY&usqp=CAU');
-insert into images ( estate_id, image) values (42, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQnZRKe5mthbwAN_6uYmne2gUU4U68zpHcWQ&usqp=CAU');
-insert into images ( estate_id, image) values (124, 'https://images.adsttc.com/media/images/5014/01c2/28ba/0d3b/4500/0b8d/slideshow/stringio.jpg?1414576481');
+insert into images ( estate_id, image) values (1,'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
+insert into images ( estate_id, image) values (1,'https://archello.s3.eu-central-1.amazonaws.com/images/2018/05/17/1.tobiarchitects.1526566679.5654.jpg');
+insert into images ( estate_id, image) values (1,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpF_yr6jMER79FRSejAszXCsyd__87nEF6g&usqp=CAU');
+insert into images ( estate_id, image) values (1,'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
+
+insert into images ( estate_id, image) values (2,'https://cdn.vox-cdn.com/thumbor/6itLJS9BZ-B5gXPjM1AB_z-ZKVI=/0x0:3000x2000/1200x800/filters:focal(1260x760:1740x1240)/cdn.vox-cdn.com/uploads/chorus_image/image/65890203/iStock_1067331614.7.jpg');
+insert into images ( estate_id, image) values (2,'https://archello.s3.eu-central-1.amazonaws.com/images/2018/05/17/1.tobiarchitects.1526566679.5654.jpg');
+insert into images ( estate_id, image) values (2,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpF_yr6jMER79FRSejAszXCsyd__87nEF6g&usqp=CAU');
+insert into images ( estate_id, image) values (2,'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
+
+insert into images ( estate_id, image) values (3,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh4O9GCySQw_9C24XfInhq-lYgfnHlRSMB5g&usqp=CAU');
+insert into images ( estate_id, image) values (3,'https://archello.s3.eu-central-1.amazonaws.com/images/2018/05/17/1.tobiarchitects.1526566679.5654.jpg');
+insert into images ( estate_id, image) values (3,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpF_yr6jMER79FRSejAszXCsyd__87nEF6g&usqp=CAU');
+insert into images ( estate_id, image) values (3,'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
+insert into images ( estate_id, image) values (4,'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
+insert into images ( estate_id, image) values (4,'https://archello.s3.eu-central-1.amazonaws.com/images/2018/05/17/1.tobiarchitects.1526566679.5654.jpg');
+insert into images ( estate_id, image) values (4,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpF_yr6jMER79FRSejAszXCsyd__87nEF6g&usqp=CAU');
+insert into images ( estate_id, image) values (4,'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
+
+insert into images ( estate_id, image) values (5,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsj7rODPg-8QIdi6VONhE84ZFng3D5WpNfbA&usqp=CAU');
+insert into images ( estate_id, image) values (5,'https://archello.s3.eu-central-1.amazonaws.com/images/2018/05/17/1.tobiarchitects.1526566679.5654.jpg');
+insert into images ( estate_id, image) values (5,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpF_yr6jMER79FRSejAszXCsyd__87nEF6g&usqp=CAU');
+insert into images ( estate_id, image) values (5,'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
+insert into images ( estate_id, image) values (6,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBOKk95d1JPgPWHYPk_Z2NXd_ntTr-N0E0yQ&usqp=CAU');
+insert into images ( estate_id, image) values (6,'https://archello.s3.eu-central-1.amazonaws.com/images/2018/05/17/1.tobiarchitects.1526566679.5654.jpg');
+insert into images ( estate_id, image) values (6,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpF_yr6jMER79FRSejAszXCsyd__87nEF6g&usqp=CAU');
+insert into images ( estate_id, image) values (6,'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
+
+
+
+
+
+
+
+
+
+
+
+
+
