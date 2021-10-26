@@ -11,6 +11,5 @@ module.exports = sync (req, res, next) => {
    req.user = {username,email,phone};
    next();
   } catch (err) {next(err);}
-  
 };
 
