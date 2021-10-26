@@ -25,16 +25,3 @@ insert into images ( estate_id, image) values (6,'https://encrypted-tbn0.gstatic
 insert into images ( estate_id, image) values (6,'https://archello.s3.eu-central-1.amazonaws.com/images/2018/05/17/1.tobiarchitects.1526566679.5654.jpg');
 insert into images ( estate_id, image) values (6,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpF_yr6jMER79FRSejAszXCsyd__87nEF6g&usqp=CAU');
 insert into images ( estate_id, image) values (6,'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
-
-
-
-
-
-
-
-
-
-
-
-
-
