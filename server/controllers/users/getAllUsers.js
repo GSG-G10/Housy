@@ -1,9 +1,12 @@
 const { getAllUsersQuery } = require('../../database/quieres');
 
-const getAllUsers = (req, res, next) => {
-  getAllUsersQuery()
-    .then(({ rows }) => res.json(({ data: rows })))
-    .catch((err) => res.json({ err }))
-    .catch((err) => next(err));
+const getAllUsers = async (req, res) => {
+  try {
+    const resalut = await getAllUsersQuery();
+    const { data } = resalut;
+    res.json(({ data: data.rows }));
+  } catch (err) {
+    res.json({ err });
+  }
 };
 module.exports = getAllUsers;
