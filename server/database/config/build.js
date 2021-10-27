@@ -9,6 +9,7 @@ const dbBuild = () => {
   sql += readFileSync(join(__dirname, 'agentsFackData.sql')).toString();
   sql += readFileSync(join(__dirname, 'realStateFackData.sql')).toString();
   sql += readFileSync(join(__dirname, 'imagesFackData.sql')).toString();
+  sql += readFileSync(join(__dirname, 'fakeData.sql')).toString();
   return connection.query(sql);
 };
 module.exports = { dbBuild };

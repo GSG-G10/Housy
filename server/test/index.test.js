@@ -5,21 +5,15 @@ const { dbBuild } = require('../database/config/build');
 const connection = require('../database/connection');
 
 beforeEach(() => dbBuild());
+afterAll(() => connection.end());
 
-describe('All users', () => {
-  test('get all users', (done) => {
-    supertest(app)
+describe('Tests Server', () => {
+  test('get all users', async () => {
+    const res = await supertest(app)
       .get('/api/v1/users')
       .expect(200)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.body.msg).toBe('You are get all users');
-        return done();
-      });
-  });
-  test('adds 1 + 2 to equal 3', () => {
-    expect(1 + 2).toBe(3);
+      .expect('Content-Type', /json/);
+    return expect(6).toEqual(res.body.data.length);
   });
 });
 
