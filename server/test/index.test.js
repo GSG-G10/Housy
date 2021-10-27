@@ -19,9 +19,10 @@ describe('Tests Server', () => {
 
 describe('user estates', () => {
   test('get users estates', async () => {
-    const result = await supertest(app).get('/api/v1/users/3/estates');
+    const result = await supertest(app)
+      .get('/api/v1/users/3/estates')
+      .expect(200)
+      .expect('Content-Type', /json/);
     expect(result.body.message).toBe('get data Successfully !');
   });
 });
-
-afterAll(() => connection.end());

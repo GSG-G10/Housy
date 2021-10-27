@@ -1,5 +1,5 @@
 {
-  "name": "Housy",
+  "name": "housy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -23,7 +23,6 @@
     "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
-    "cross": "^1.0.0",
     "cross-env": "^7.0.3",
     "env2": "^2.2.2",
     "express": "^4.17.1",
