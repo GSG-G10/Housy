@@ -4,8 +4,8 @@ const userEstateshandler = async (req, res) => {
   const { userId } = req.params;
 
   try {
-    const { rows } = await UserEstatesQuery(userId);
     if (userId > 0) {
+      const { rows } = await UserEstatesQuery(userId);
       return res.json({
         data: rows,
       });
