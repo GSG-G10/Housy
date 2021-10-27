@@ -20,8 +20,14 @@ describe('Tests Server', () => {
 describe('user estates', () => {
   test('get users estates', async () => {
     const result = await supertest(app).get('/api/v1/users/3/estates');
-    expect(result.body.message).toBe('get data Successfully !');
+    expect(result.status).toBe(200);
+    expect(result.body.data.length).toBe(1);
   });
 });
 
-afterAll(() => connection.end());
+describe('user estates', () => {
+  test('get users estates', async () => {
+    const result = await supertest(app).get('/api/v1/users/three/estates');
+    expect(result.status).toBe(404);
+  });
+});
