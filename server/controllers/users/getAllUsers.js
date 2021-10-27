@@ -1,12 +1,13 @@
+/* eslint-disable no-console */
 const { getAllUsersQuery } = require('../../database/quieres');
 
-const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res, next) => {
   try {
-    const resalut = await getAllUsersQuery();
-    const { data } = resalut;
-    res.json(({ data: data.rows }));
+    const { rows } = await getAllUsersQuery();
+
+    res.json(({ data: rows }));
   } catch (err) {
-    res.json({ err });
+    next(err);
   }
 };
 module.exports = getAllUsers;
