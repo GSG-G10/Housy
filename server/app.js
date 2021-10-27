@@ -5,8 +5,6 @@ const cookieParser = require('cookie-parser');
 const router = require('./routes');
 const { notFoundError, serverError } = require('./controllers/errors');
 
-require('env2')('.env');
-
 const { env: { PORT, NODE_ENV } } = process;
 
 const app = express();

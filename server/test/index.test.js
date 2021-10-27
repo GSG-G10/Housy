@@ -61,3 +61,41 @@ describe('user estates', () => {
     });
   });
 });
+describe('test signup endpoint with all cases ', () => {
+  test('test sign up endpoint when success', (done) => {
+    request(app)
+      .post('/api/v1/signup')
+      .send({
+        username: 'test',
+        password: 'test123456',
+        email: 'test@gmail.com',
+        phone: '0597853626',
+      })
+      .expect(201)
+      .expect((response) => expect(response.header['set-cookie'][0].split('=')[0]).toBe('token'))
+      .end((err) => {
+        if (err) {
+          return done(err);
+        }
+        return done();
+      });
+  });
+
+  test('test signup username or phone already exists', (done) => {
+    request(app)
+      .post('/api/v1/signup')
+      .send({
+        username: 'test',
+        password: 'test123456',
+        email: 'test@gmail.com',
+        phone: '0597853626',
+      })
+      .expect(400)
+      .end((err) => {
+        if (err) {
+          return done(err);
+        }
+        return done();
+      });
+  });
+});
