@@ -1,8 +1,6 @@
-const express = require('express');
+const router = require('express').Router();
 const { notFoundError, serverError } = require('../controllers/errors');
 const { getAllUsers, logout } = require('../controllers');
-
-const router = express.Router();
 
 router.get('/users', getAllUsers);
 router.get('/logout', logout);
