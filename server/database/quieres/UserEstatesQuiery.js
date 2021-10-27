@@ -1,3 +1,7 @@
-const connection = require('../connection')
+const connection = require('../connection');
 
-module.exports = (userId) =>connection.query('SELECT * FROM estates WHERE userId = $1',[userId])
+connection.query('SELECT * FROM estates WHERE agent_id = $1', [1]);
+
+module.exports = (userId) => connection.query('SELECT * FROM estates WHERE agent_id = $1', [userId]);
+
+//
