@@ -1,3 +1,8 @@
 const UserEstatesQuiery = require('./UserEstatesQuiery');
+const getAllUsersQuery = require('./getAllUsersQuery');
 
-module.exports = {UserEstatesQuiery}
+module.exports = {
+  getAllUsersQuery,
+  UserEstatesQuiery,
+
+};

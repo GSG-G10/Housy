@@ -1,3 +1,4 @@
 const { userEstateshandler } = require('./users');
+const getAllUsers = require('./users/getAllUsers');
 
-module.exports = { userEstateshandler };
+module.exports = { getAllUsers, userEstateshandler };
