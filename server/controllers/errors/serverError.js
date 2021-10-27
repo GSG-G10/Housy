@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const serverError = (req, res, next, err) => {
+const serverError = (err, req, res, next) => {
   res.status(500).json({ message: 'Server Error' });
 };
 
