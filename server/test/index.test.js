@@ -24,16 +24,10 @@ describe('All users', () => {
 });
 
 describe('user estates', () => {
-  test('get users estates', (done) => {
-    supertest(app)
-      .get('/api/v1/users/3/estates')
-      .expect(200)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.body.message).toBe('get data Successfully !');
-        return done();
-      });
+  test('get users estates', async () => {
+    const result = await supertest(app).get('/api/v1/users/3/estates');
+    expect(result.body.message).toBe('get data Successfully !');
   });
 });
+
 afterAll(() => connection.end());
