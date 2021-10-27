@@ -56,5 +56,8 @@ describe('user estates', () => {
       .get('/api/v1/users/three/estates')
       .expect(404)
       .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'enter valid user id',
+    });
   });
 });
