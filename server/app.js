@@ -3,6 +3,9 @@ const { join } = require('path');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const router = require('./routes');
+const { notFoundError, serverError } = require('./controllers/errors');
+
+require('env2')('.env');
 
 const { env: { PORT, NODE_ENV } } = process;
 
@@ -28,4 +31,7 @@ if (NODE_ENV === 'production') {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
+
+router.use(notFoundError);
+router.use(serverError);
 module.exports = app;

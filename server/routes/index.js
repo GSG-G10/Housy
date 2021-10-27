@@ -1,10 +1,8 @@
 const router = require('express').Router();
-const signup = require('../controllers/users/signup');
-// const createToken = require('../controllers/middleware/auth/createToken');
-const { notFoundError, serverError } = require('../controllers/errors');
+const auth = require('./auth');
+const users = require('./users');
 
-router.post('/signup', signup);
+router.use('/', auth);
+router.use('/users', users);
 
-router.use(notFoundError);
-router.use(serverError);
 module.exports = router;
