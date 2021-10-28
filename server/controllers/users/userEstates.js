@@ -1,16 +1,16 @@
-const { UserEstatesQuery } = require('../../database/quieres/index');
+const { userEstatesQuery } = require('../../database/quieres/index');
 
 const userEstateshandler = async (req, res) => {
   const { userId } = req.params;
 
   try {
     if (userId > 0) {
-      const { rows } = await UserEstatesQuery(userId);
+      const { rows } = await userEstatesQuery(userId);
       return res.json({
         data: rows,
       });
     }
-    res.status(404).json({
+    return res.status(404).json({
       message: 'enter valid user id',
     });
   } catch (err) {

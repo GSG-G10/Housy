@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 const supertest = require('supertest');
 const app = require('../app');
-const { dbBuild } = require('../database/config/build');
-const connection = require('../database/connection');
+const dbBuild = require('../database/config/build');
+const connection = require('../database/config/connection');
 
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());

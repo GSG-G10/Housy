@@ -17,9 +17,11 @@ switch (NODE_ENV) {
   default:
     throw new Error('There\'s no environment');
 }
+
 const options = {
   connectionString: dbUrl,
   ssl: { rejectUnauthorized: false },
 
 };
+
 module.exports = new Pool(options);
