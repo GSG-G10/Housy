@@ -1,3 +1,4 @@
+require('env2')('.env');
 const { Pool } = require('pg');
 
 const {
@@ -17,8 +18,10 @@ switch (NODE_ENV) {
   default:
     throw new Error('There\'s no environment');
 }
+
 const options = {
   connectionString: dbUrl,
   ssl: false
 };
+
 module.exports = new Pool(options);
