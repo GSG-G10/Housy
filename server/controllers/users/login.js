@@ -8,11 +8,9 @@ const { signToken } = require('../../utils');
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    console.log(req.body);
     await loginSchema.validateAsync(req.body);
 
     const { rows } = await checkEmailQuery(email);
-    console.log(rows);
 
     if (!rows.length) {
       throw new Error({ message: 'Invalid email or password' });
@@ -23,7 +21,7 @@ const login = async (req, res, next) => {
     }
     const token = await signToken(email, rows[0].id, rows[0].name, rows[0].phone, rows[0].avater);
     res.cookie('token', token);
-    return res.json({ message: 'logged in successfully' });
+    return res.json({ message: 'You are Logged Successfully' });
   } catch (err) {
     if (err.details) {
       res.status(400).json({

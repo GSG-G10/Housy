@@ -15,6 +15,28 @@ describe('Tests Server', () => {
       .expect('Content-Type', /json/);
     return expect(6).toEqual(res.body.data.length);
   });
+
+  test(' login route /login ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/login')
+      .send({
+        email: 'kallport0@patch.com',
+        password: '6D29E04CD937DC37CB72E42736CA238C',
+      })
+      .expect(200);
+    expect(res.body).toEqual({ message: 'You are Logged Successfully' });
+  });
+
+  test(' login route /login with error in email or password ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/login')
+      .send({
+        email: 'kallport0@patch.com',
+        password: '123456987',
+      })
+      .expect(400);
+    expect(res.body).toEqual({ message: 'Invalid email or passwor' });
+  });
 });
 
 describe('user estates', () => {
