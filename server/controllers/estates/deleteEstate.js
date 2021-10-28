@@ -9,11 +9,13 @@ module.exports = async (req, res, next) => {
         message: 'Estate deleted successfully',
       });
     } else {
+      console.log(row);
       res.status(404).json({
         message: 'Estate not found',
       });
     }
   } catch (err) {
+    console.log(err, 'Hello');
     next(err);
   }
 };

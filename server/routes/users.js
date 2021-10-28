@@ -8,5 +8,4 @@ router.use('/estate', estate);
 router.get('/users/:userId/estates', userEstateshandler);
 router.get('/users', getAllUsers);
 
-
 module.exports = router;
