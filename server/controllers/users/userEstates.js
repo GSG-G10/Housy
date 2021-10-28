@@ -11,7 +11,7 @@ const userEstateshandler = async (req, res) => {
         data: rows,
       });
     }
-    res.status(404).json({
+    return res.status(404).json({
       message: 'enter valid user id',
     });
   } catch (err) {
