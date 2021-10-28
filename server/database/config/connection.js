@@ -1,4 +1,5 @@
 const { Pool } = require('pg');
+require('env2')('.env');
 
 const {
   NODE_ENV, DATABASE_URL_DEV, DATABASE_URL, DATABASE_URL_TEST,

@@ -63,7 +63,7 @@ describe('user estates', () => {
 });
 describe('test signup endpoint with all cases ', () => {
   test('test sign up endpoint when success', (done) => {
-    request(app)
+    supertest(app)
       .post('/api/v1/signup')
       .send({
         username: 'test',
@@ -82,13 +82,13 @@ describe('test signup endpoint with all cases ', () => {
   });
 
   test('test signup username or phone already exists', (done) => {
-    request(app)
+    supertest(app)
       .post('/api/v1/signup')
       .send({
-        username: 'test',
-        password: 'test123456',
-        email: 'test@gmail.com',
-        phone: '0597853626',
+        username: 'Kai',
+        password: '1234567894455',
+        email: 'kallport0@patch.com',
+        phone: '677-871-7450',
       })
       .expect(400)
       .end((err) => {
