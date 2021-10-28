@@ -1,10 +1,10 @@
+require('env2')('.env');
 const express = require('express');
 const { join } = require('path');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const { notFoundError, serverError } = require('./controllers/errors');
 const router = require('./routes');
-require('env2')('.env');
 
 const { env: { PORT, NODE_ENV } } = process;
 
@@ -26,6 +26,6 @@ if (NODE_ENV === 'production') {
   });
 }
 router.use(notFoundError);
-router.use(serverError);
+// router.use(serverError);
 
 module.exports = app;
