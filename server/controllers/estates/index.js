@@ -1,3 +1,4 @@
 const editEstate = require('./editEstate');
+const getAllEstate = require('./allEstate');
 
-module.exports = { editEstate };
+module.exports = { editEstate, getAllEstate };
