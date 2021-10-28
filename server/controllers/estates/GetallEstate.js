@@ -1,3 +1,13 @@
-const { GetallEstate } = require("../../database/quieres");
+const { GetallEstates } = require("../../database/quieres");
 
-module.exports = (req, res, next) => GetallEstate().then(result => res.json(result.rows)).catch(err => next(err));
+const GetallEstate = async(req, res, next) => {
+    try {
+        const { rows } = await GetallEstates();
+
+        res.json(({ data: rows }));
+    } catch (err) {
+        next(err);
+    }
+};
+
+module.exports = GetallEstate;
