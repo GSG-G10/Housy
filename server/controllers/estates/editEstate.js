@@ -1,24 +1,25 @@
-/* eslint-disable no-console */
 const { editEstateQuery } = require('../../database/quieres');
+const { editEstateValidation } = require('../../utils/validation/editEstateValidation');
 
 const editEstate = async (req, res, next) => {
-  const { estateId } = req.params;
-  const {
-    title,
-    price,
-    description,
-    type,
-    category,
-    street,
-    city,
-    region,
-    bathrooms,
-    bedrooms,
-    rooms,
-    space,
-    available,
-  } = req.body;
   try {
+    const result = await editEstateValidation.validateAsync({ ...req.body, ...req.params });
+    const {
+      estateId,
+      title,
+      price,
+      description,
+      type,
+      category,
+      street,
+      city,
+      region,
+      bathrooms,
+      bedrooms,
+      rooms,
+      space,
+      available,
+    } = result;
     await editEstateQuery(
       estateId,
       title,
@@ -35,7 +36,7 @@ const editEstate = async (req, res, next) => {
       space,
       available,
     );
-    res.json();
+    res.json({ status: 200 });
   } catch (err) {
     next(err);
   }
