@@ -10,14 +10,14 @@ module.exports = async (req, res, next) => {
         password, email, username, phone,
       },
     } = signupSchema.validate(req.body);
-    if (error) return res.status(400).json({ error: error.details[0].message });
+    if (error) return res.status(400).json({ message: error.details[0].message });
     const hasedPasword = await hash(password, 10);
     await signUpQuery(username, email, phone, hasedPasword);
     const token = await signToken(email, username, phone);
     return res.status(201).cookie('token', token).json({ message: 'user created' });
   } catch (err) {
     if (err.code === '23505') {
-      return res.status(400).json({ error: 'username or phone already exists' });
+      return res.status(400).json({ message: 'username or phone already exists' });
     }
     return next(err);
   }
