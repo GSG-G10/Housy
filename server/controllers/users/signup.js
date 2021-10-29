@@ -1,5 +1,5 @@
 const { hash } = require('bcrypt');
-const signupSchema = require('../../utils/validation/signUpSchema');
+const agentSchema = require('../../utils/validation/agentSchema');
 const signUpQuery = require('../../database/quieres/account/signUp');
 const { signToken } = require('../../utils');
 
@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
       error, value: {
         password, email, username, phone,
       },
-    } = signupSchema.validate(req.body);
+    } = agentSchema.validate(req.body);
     if (error) return res.status(400).json({ message: error.details[0].message });
     const hasedPasword = await hash(password, 10);
     await signUpQuery(username, email, phone, hasedPasword);
