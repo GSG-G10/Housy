@@ -1,4 +1,3 @@
-require('env2')('.env');
 const express = require('express');
 const { join } = require('path');
 const compression = require('compression');
@@ -26,6 +25,6 @@ if (NODE_ENV === 'production') {
   });
 }
 router.use(notFoundError);
-// router.use(serverError);
+router.use(serverError);
 
 module.exports = app;
