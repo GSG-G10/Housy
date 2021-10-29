@@ -61,10 +61,11 @@ describe('user estates', () => {
     });
   });
 });
+
 describe('test signup endpoint with all cases ', () => {
-  test('test sign up endpoint when success', (done) => {
-    supertest(app)
-      .post('/api/v1/signup')
+  test('test sign up endpoint when success', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/users/signup')
       .send({
         username: 'test',
         password: 'test123456',
@@ -73,17 +74,15 @@ describe('test signup endpoint with all cases ', () => {
       })
       .expect(201)
       .expect((response) => expect(response.header['set-cookie'][0].split('=')[0]).toBe('token'))
-      .end((err) => {
-        if (err) {
-          return done(err);
-        }
-        return done();
-      });
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'user created',
+    });
   });
 
-  test('test signup username or phone already exists', (done) => {
-    supertest(app)
-      .post('/api/v1/signup')
+  test('test signup error validation phone" length must be 10 characters long ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/users/signup')
       .send({
         username: 'Kai',
         password: '1234567894455',
@@ -91,11 +90,24 @@ describe('test signup endpoint with all cases ', () => {
         phone: '677-871-7450',
       })
       .expect(400)
-      .end((err) => {
-        if (err) {
-          return done(err);
-        }
-        return done();
-      });
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      error: '"phone" length must be 10 characters long',
+    });
+  });
+  test('test signup username or phone already exists ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/users/signup')
+      .send({
+        username: 'Kai',
+        password: '1234567894455',
+        email: 'kallport0@patch.com',
+        phone: '0599832683',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      error: 'username or phone already exists',
+    });
   });
 });
