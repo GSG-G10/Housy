@@ -72,13 +72,22 @@ describe('Delete Specific Estate By Using Id', () => {
       message: 'Estate deleted successfully',
     });
   });
-  test('/estate/:estateId status 404, when delete the same estate was deleted or not found ', async () => {
+  test('/estate/:estateId status 400, when delete the same estate was deleted or not found ', async () => {
     const res = await supertest(app)
       .delete('/api/v1/estate/100')
-      .expect(404)
+      .expect(400)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
-      message: 'Estate not found',
+      message: 'You can\'t complete this process at the moment',
+    });
+  });
+  test('/estate/:estateId status 400, Invalid estate id ', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/estate/-121')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'Invalid estate id',
     });
   });
 });
