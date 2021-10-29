@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable consistent-return */
 const bcrypt = require('bcrypt');
 const { loginSchema } = require('../../utils/validation/loginSchema');
@@ -20,8 +19,7 @@ const login = async (req, res, next) => {
       throw new Error({ message: 'Invalid email or password' });
     }
     const token = await signToken(email, rows[0].id, rows[0].name, rows[0].phone, rows[0].avater);
-    res.cookie('token', token);
-    return res.json({ message: 'You are Logged Successfully' });
+    return res.cookie('token', token).json({ message: 'You are Logged Successfully' });
   } catch (err) {
     if (err.details) {
       res.status(400).json({

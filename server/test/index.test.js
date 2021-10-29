@@ -35,7 +35,7 @@ describe('Tests Server', () => {
         password: '123456987',
       })
       .expect(400);
-    expect(res.body).toEqual({ message: 'Invalid email or passwor' });
+    expect(res.body).toEqual({ message: 'Invalid email or password' });
   });
 });
 
