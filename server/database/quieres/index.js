@@ -6,4 +6,5 @@ module.exports = {
   getAllUsersQuery,
   userEstatesQuery,
   editEstateQuery,
+
 };

@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const { userEstateshandler } = require('../controllers');
-const { getAllUsers, logout } = require('../controllers');
-const { editEstate } = require('../controllers/estates');
 
-router.get('/users/:userId/estates', userEstateshandler);
-router.put('/estate/:estateId', editEstate);
+const auth = require('./auth');
+const users = require('./users');
+const estate = require('./estate');
 
-router.get('/users', getAllUsers);
-router.get('/logout', logout);
+router.use('/', estate);
+router.use('/', auth);
+router.use('/users', users);
 
 module.exports = router;
