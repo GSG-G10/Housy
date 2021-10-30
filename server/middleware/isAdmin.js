@@ -1,17 +1,20 @@
 const { checkAdminQuery } = require('../database/quieres');
+const { verifyToken } = require('../utils');
 
 const isAdmin = async (req, res, next) => {
   try {
-    const { email } = req.cookies;
-    if (!email) {
-      throw new Error({ message: 'You are not authorized' });
+    const { token } = req.cookies;
+    if (!token) {
+      return res.status(400).json({ message: 'You are not authorized' });
     }
-    const rows = await checkAdminQuery(email);
+    const decoded = await verifyToken(token);
+
+    const rows = await checkAdminQuery(decoded.email);
     if (!rows.length) {
-      throw new Error({ message: 'You are not authorized' });
-    } else {
-      return res.json({ message: 'You are Admin' });
+      return res.status(400).json({ message: 'You are not authorized' });
     }
+    res.status(201).json({ message: 'You are Admin' });
+    return next();
   } catch (err) {
     return next(err);
   }
