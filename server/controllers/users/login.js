@@ -12,13 +12,14 @@ const login = async (req, res, next) => {
     const { rows } = await checkEmailQuery(email);
 
     if (!rows.length) {
-      throw new Error({ message: 'Invalid email or password' });
+      return res.status(400).json({ message: 'Invalid email or password' });
     }
+
     const compared = await bcrypt.compare(password, rows[0].password);
     if (!compared) {
-      throw new Error({ message: 'Invalid email or password' });
+      return res.status(400).json({ message: 'Invalid email or password' });
     }
-    const token = await signToken(email, rows[0].id, rows[0].name, rows[0].phone, rows[0].avater);
+    const token = await signToken(email, rows[0].id);
     return res.cookie('token', token).json({ message: 'You are Logged Successfully' });
   } catch (err) {
     if (err.details) {
