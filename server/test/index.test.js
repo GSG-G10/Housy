@@ -62,27 +62,29 @@ describe('user estates', () => {
   });
 });
 
-// describe('edit estates', () => {
-//   test('edit estates', async () => {
-//     const res = await supertest(app)
-//       .get('api/v1/estate/3')
-//       .send({
-//         title: '1',
-//         price: 10,
-//         description: 's',
-//         type: 's',
-//         category: 's',
-//         street: 's',
-//         city: 's',
-//         region: 's',
-//         bathrooms: 's',
-//         bedrooms: 's',
-//         rooms: 's',
-//         space: 's',
-//         available: false,
-//       })
-//       .expect(200)
-//       .expect('Content-Type', /json/);
-//     console.log(res);
-//   });
-// });
+test('edit estates', (done) => {
+  supertest(app)
+    .put('/api/v1/estate/3')
+    .send({
+      title: '1',
+      price: 10,
+      description: 's',
+      type: 's',
+      category: 's',
+      street: 's',
+      city: 's',
+      region: 's',
+      bathrooms: 1,
+      bedrooms: 1,
+      rooms: 1,
+      space: 50,
+      available: false,
+    })
+    .expect(200)
+    .expect('Content-Type', /json/)
+    .end((err, res) => {
+      if (err) return done(err);
+      expect(res.body.status).toBe(200);
+      return done();
+    });
+});
