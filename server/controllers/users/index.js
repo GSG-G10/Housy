@@ -1,4 +1,9 @@
+const signup = require('./signup');
 const userEstateshandler = require('./userEstates');
 const getAllUsers = require('./getAllUsers');
 
-module.exports = { getAllUsers, userEstateshandler };
+module.exports = {
+  signup,
+  getAllUsers,
+  userEstateshandler,
+};

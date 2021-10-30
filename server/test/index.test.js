@@ -61,3 +61,72 @@ describe('user estates', () => {
     });
   });
 });
+
+describe('test signup endpoint with all cases ', () => {
+  test('test sign up endpoint when success', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/users/signup')
+      .send({
+        username: 'test',
+        password: 'test123456',
+        email: 'test@gmail.com',
+        phone: '0597853626',
+        confirmedPassword: 'test123456',
+      })
+      .expect(201)
+      .expect((response) => expect(response.header['set-cookie'][0].split('=')[0]).toBe('token'))
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'user created',
+    });
+  });
+
+  test('test signup error validation phone" length must be 10 characters long ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/users/signup')
+      .send({
+        username: 'Kai',
+        password: '1234567894455',
+        email: 'kallport0@patch.com',
+        phone: '677',
+        confirmedPassword: '1234567894455',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: '"phone" length must be at least 9 characters long',
+    });
+  });
+  test('test signup username or phone already exists ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/users/signup')
+      .send({
+        username: 'Kai',
+        password: '1234567894455',
+        email: 'kallport0@patch.com',
+        phone: '0599832683',
+        confirmedPassword: '1234567894455',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'The user is already exists',
+    });
+  });
+  test('test signup confirmpassword ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/users/signup')
+      .send({
+        username: 'test',
+        password: 'test123456',
+        email: 'test@gmail.com',
+        phone: '0597853626',
+        confirmedPassword: 'test12345',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: '"confirmedPassword" must be [ref:password]',
+    });
+  });
+});
