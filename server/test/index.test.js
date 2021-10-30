@@ -61,3 +61,29 @@ describe('user estates', () => {
     });
   });
 });
+
+// describe('edit estates', () => {
+//   test('edit estates', async (done) => {
+//     const result = await supertest(app)
+//       .put('api/v1/estate/3')
+//       .expect(200)
+//       .expect('Content-Type', /json/)
+//       .end((err, res) => {
+//         if (err) return done(err);
+//         expect(1).toBe(1);
+//         return done();
+//       });
+
+//     // return expect(1).toEqual(1);
+//   });
+// });
+
+describe('Tests Server', () => {
+  test('get all users', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/estates')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    return expect(6).toEqual(res.body.data.length);
+  });
+});
