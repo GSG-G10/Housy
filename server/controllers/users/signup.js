@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
     return res.status(201).cookie('token', token).json({ message: 'user created' });
   } catch (err) {
     if (err.code === '23505') {
-      return res.status(400).json({ message: 'username or phone already exists' });
+      return res.status(400).json({ message: 'The user is already exists' });
     }
     return next(err);
   }
