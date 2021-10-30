@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const connection = require('../connection');
+const connection = require('../config/connection');
 
 const editEstateQuery = (id,
   title,
