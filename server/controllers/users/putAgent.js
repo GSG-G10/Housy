@@ -1,10 +1,10 @@
-const { putUser } = require('../../database/quieres');
-const studentSchema = require('../../utils/validation/signUpSchema.js ');
+const { putAgent } = require('../../database/quieres');
+const agentSchema = require('../../utils/validation/agentSchema');
 
 module.exports = async (req, res, next) => {
   try {
-    const { studentId } = req.params;
-    const data = await studentSchema.validate(
+    const { agentId } = req.params;
+    const data = await agentSchema.validate(
       { ...req.body, studentId },
       { abortEarly: false },
     );
