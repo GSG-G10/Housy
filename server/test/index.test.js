@@ -7,13 +7,37 @@ const connection = require('../database/config/connection');
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
-describe('Tests Server', () => {
+describe('Get all users', () => {
   test('get all users', async () => {
     const res = await supertest(app)
       .get('/api/v1/users')
       .expect(200)
       .expect('Content-Type', /json/);
-    return expect(6).toEqual(res.body.data.length);
+    return expect(3).toEqual(res.body.data.length);
+  });
+});
+
+describe('Tests login route', () => {
+  test(' login route /login ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/login')
+      .send({
+        email: 'kallport0@patch.com',
+        password: '12345',
+      })
+      .expect(200);
+    return expect(res.body).toEqual({ message: 'You are Logged Successfully' });
+  });
+
+  test(' login route /login with error in email or password ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/login')
+      .send({
+        email: 'kallport0@patch.com',
+        password: '123456987',
+      })
+      .expect(400);
+    return expect(res.body).toEqual({ message: 'Invalid email or password' });
   });
 });
 
@@ -23,7 +47,6 @@ describe('user estates', () => {
       .get('/api/v1/users/3/estates')
       .expect(200)
       .expect('Content-Type', /json/);
-
     return expect(res.body).toEqual({
       data: [
         {
@@ -45,7 +68,27 @@ describe('user estates', () => {
           rate: 5,
           available: false,
         },
+        {
+          id: 6,
+          agent_id: 3,
+          title: 'vestibulum ante ipsum primis',
+          price: '194193.55',
+          description: 'leo odio porttitor id consequat in consequat ut nulla sed',
+          type: 'Buy',
+          category: 'House',
+          street: '0891 7th Park',
+          city: 'Álimos',
+          region: 'Greece',
+          bathrooms: 1,
+          bedrooms: 3,
+          rooms: 2,
+          space: '174',
+          approved: false,
+          rate: 1,
+          available: false,
+        },
       ],
+
     });
   });
 });
@@ -59,6 +102,53 @@ describe('user estates', () => {
     return expect(res.body).toEqual({
       message: 'enter valid user id',
     });
+  });
+});
+describe('user estates', () => {
+  test('edit estates', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/estate/3')
+      .send({
+        title: '1',
+        price: 10,
+        description: 's',
+        type: 's',
+        category: 's',
+        street: 's',
+        city: 's',
+        region: 's',
+        bathrooms: 1,
+        bedrooms: 1,
+        rooms: 1,
+        space: 50,
+        available: false,
+      })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    return expect(res.body.message).toBe('Estate updated successfully');
+  });
+
+  test('edit estates erorr', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/estate/350')
+      .send({
+        title: '1',
+        price: 10,
+        description: 's',
+        type: 's',
+        category: 's',
+        street: 's',
+        city: 's',
+        region: 's',
+        bathrooms: 1,
+        bedrooms: 1,
+        rooms: 1,
+        space: 50,
+        available: false,
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body.message).toBe('enter valid estate id ');
   });
 });
 
@@ -90,6 +180,7 @@ describe('Delete Specific Estate By Using Id', () => {
       message: 'Invalid estate id',
     });
   });
+});
 describe('test signup endpoint with all cases ', () => {
   test('test sign up endpoint when success', async () => {
     const res = await supertest(app)
@@ -141,6 +232,7 @@ describe('test signup endpoint with all cases ', () => {
       message: 'The user is already exists',
     });
   });
+
   test('test signup confirmpassword ', async () => {
     const res = await supertest(app)
       .post('/api/v1/users/signup')

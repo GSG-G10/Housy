@@ -1,6 +1,6 @@
 -- 
 INSERT INTO agents (name,  email, password , phone)
- VALUES ('Kai', 'kallport0@patch.com', '$2b$10$oNaAu46EHAyOCiufPgchaOQDq5opRxSFHB20m.e3wzDBlM5Yzztf2', '677-871-7450'),
+ VALUES ('Kai', 'kallport0@patch.com', '$2b$10$gT8Qb2Qe01W1QMRFmH9IC.3bmbA4PS2yG4XQvdkYWxKday.SbjGI2', '677-871-7450'),
  ('Trixie', 'tbeadon1@plala.or.jp', '$2b$10$oNaAu46EHAyOCiufPgchaOQDq5opRxSFHB20m.e3wzDBlM5Yzztf2', '0599832685'),
 ('Allina', 'aburford2@tumblr.com', '$2b$10$oNaAu46EHAyOCiufPgchaOQDq5opRxSFHB20m.e3wzDBlM5Yzztf2', '630-385-8312');
 
