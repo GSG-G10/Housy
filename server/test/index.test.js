@@ -62,6 +62,34 @@ describe('user estates', () => {
   });
 });
 
+describe('Delete Specific Estate By Using Id', () => {
+  test('/estate/:estateId status 200 ', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/estate/1')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'Estate deleted successfully',
+    });
+  });
+  test('/estate/:estateId status 400, when delete the same estate was deleted or not found ', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/estate/100')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'You can\'t complete this process at the moment',
+    });
+  });
+  test('/estate/:estateId status 400, Invalid estate id ', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/estate/-121')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'Invalid estate id',
+    });
+  });
 describe('test signup endpoint with all cases ', () => {
   test('test sign up endpoint when success', async () => {
     const res = await supertest(app)
