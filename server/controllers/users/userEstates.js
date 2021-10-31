@@ -1,6 +1,5 @@
 const { userEstatesQuery } = require('../../database/quieres/index');
 
-// eslint-disable-next-line consistent-return
 const userEstateshandler = async (req, res) => {
   const { userId } = req.params;
 

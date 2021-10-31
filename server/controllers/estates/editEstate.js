@@ -1,43 +1,30 @@
-/* eslint-disable no-console */
 const { editEstateQuery } = require('../../database/quieres');
+const { editEstateValidation } = require('../../utils/validation/editEstateValidation');
 
 const editEstate = async (req, res, next) => {
-  const { estateId } = req.params;
-  const {
-    title,
-    price,
-    description,
-    type,
-    category,
-    street,
-    city,
-    region,
-    bathrooms,
-    bedrooms,
-    rooms,
-    space,
-    available,
-  } = req.body;
   try {
-    await editEstateQuery(
-      estateId,
-      title,
-      price,
-      description,
-      type,
-      category,
-      street,
-      city,
-      region,
-      bathrooms,
-      bedrooms,
-      rooms,
-      space,
-      available,
+    const {
+      estateId, title, price, description,
+      type, category, street, city, region,
+      bathrooms, bedrooms, rooms, space, available,
+    } = await editEstateValidation.validateAsync({ ...req.body, ...req.params });
+
+    const { rowCount } = await editEstateQuery(
+      estateId, title, price, description, type,
+      category, street, city, region, bathrooms,
+      bedrooms, rooms, space, available,
     );
-    res.json();
+
+    if (rowCount === 0) {
+      res.status(400).json({ status: 400, message: 'enter valid estate id ' });
+    }
+    res.json({ message: 'Estate updated successfully' });
   } catch (err) {
-    next(err);
+    if (err.details) {
+      res.status(400).json({ status: 400, message: err.details.message });
+    } else {
+      next(err);
+    }
   }
 };
 module.exports = editEstate;
