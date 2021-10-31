@@ -47,7 +47,7 @@ describe('Tests login route to  admin', () => {
       .post('/api/v1/adminLogin')
       .send({
         email: 'mohmsal96@gmail.com',
-        password: '123456',
+        password: '1234567894455',
       })
       .expect(200);
     return expect(res.body).toEqual({ message: 'You are Logged Successfully' });
