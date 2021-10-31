@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const { getAllUsersQuery } = require('../../database/quieres');
 
 const getAllUsers = async (req, res, next) => {
