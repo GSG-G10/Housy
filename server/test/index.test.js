@@ -181,6 +181,7 @@ describe('Delete Specific Estate By Using Id', () => {
     });
   });
 });
+
 describe('test signup endpoint with all cases ', () => {
   test('test sign up endpoint when success', async () => {
     const res = await supertest(app)
@@ -247,6 +248,52 @@ describe('test signup endpoint with all cases ', () => {
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
       message: '"confirmedPassword" must be [ref:password]',
+    });
+  });
+});
+
+describe('test Edit Agent data /users/:iduser  ', () => {
+  test('test 200', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/users/1')
+      .send({
+        username: 'test',
+        email: 'kallport0@patch.com',
+        phone: '059985555555',
+      })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'Agent\'s data updated successfully',
+    });
+  });
+
+  test('test 400', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/users/1')
+      .send({
+        username: 'test',
+        email: 'kallport0@patch.com',
+        phone: '0599',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: '"phone" length must be at least 9 characters long',
+    });
+  });
+  test('test 404', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/users/400')
+      .send({
+        username: 'test',
+        email: 'kallport0@patch.com',
+        phone: '059915587555',
+      })
+      .expect(404)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'There\'s no Agent, put correct id',
     });
   });
 });
