@@ -41,6 +41,30 @@ describe('Tests login route', () => {
   });
 });
 
+describe('Tests login route to  admin', () => {
+  test(' login route /login ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/adminLogin')
+      .send({
+        email: 'mohmsal96@gmail.com',
+        password: '123456',
+      })
+      .expect(200);
+    return expect(res.body).toEqual({ message: 'You are Logged Successfully' });
+  });
+
+  test(' login route /login with error in email or password ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/adminLogin')
+      .send({
+        email: 'msal96@gmail.com',
+        password: '1234566',
+      })
+      .expect(400);
+    return expect(res.body).toEqual({ message: 'Invalid email or password' });
+  });
+});
+
 describe('user estates', () => {
   test('get users estates', async () => {
     const res = await supertest(app)
