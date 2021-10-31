@@ -1,9 +1,11 @@
 const userEstatesQuery = require('./userEstatesQuiery');
 const getAllUsersQuery = require('./getAllUsersQuery');
-const deleteEstate = require('./deleteEstate');
+const editEstateQuery = require('./editEstatesQuery');
+const deleteEstateQuery = require('./deleteEstateQuery');
 
 module.exports = {
   getAllUsersQuery,
   userEstatesQuery,
-  deleteEstate,
+  editEstateQuery,
+  deleteEstateQuery,
 };
