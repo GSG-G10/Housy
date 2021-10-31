@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const { isAuth, isAdmin } = require('../middleware');
+// const { isAuth, isAdmin } = require('../middleware');
 const { editEstate, deleteEstate } = require('../controllers');
 
-router.put('/:estateId', isAuth, editEstate);
+router.put('/:estateId', editEstate);
 
-router.delete('/:estateId', isAuth, deleteEstate);
+router.delete('/:estateId', deleteEstate);
 module.exports = router;
