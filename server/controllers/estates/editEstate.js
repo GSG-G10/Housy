@@ -17,8 +17,9 @@ const editEstate = async (req, res, next) => {
 
     if (rowCount === 0) {
       res.status(400).json({ status: 400, message: 'enter valid estate id ' });
+    } else {
+      res.json({ message: 'Estate updated successfully' });
     }
-    res.json({ message: 'Estate updated successfully' });
   } catch (err) {
     if (err.details) {
       res.status(400).json({ status: 400, message: err.details.message });
