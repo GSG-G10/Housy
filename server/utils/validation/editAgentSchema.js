@@ -1,8 +1,9 @@
 const joi = require('joi');
 
 module.exports = joi.object({
-  name: joi.string().required(),
+  username: joi.string().required(),
   email: joi.string().email().required(),
-  phone: joi.string().length(10).required(),
+  phone: joi.string().min(9).required(),
   avater: joi.string(),
+  userId: joi.number().min(1).required(),
 });

@@ -1,5 +1,5 @@
 const connection = require('../config/connection');
 
 module.exports = ({
-  agentId, name, email, phone, avater,
-}) => connection.query('UPDATE agent SET name=$1,email=$2,phone=$3,avater=$3 WHERE id=$4', [name, email, phone, avater, agentId]);
+  userId, username, email, phone, avater = '',
+}) => connection.query('UPDATE agents SET name=$1,email=$2,phone=$3,avater=$4 WHERE id=$5', [username, email, phone, avater, userId]);
