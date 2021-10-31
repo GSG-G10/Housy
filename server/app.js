@@ -24,7 +24,7 @@ if (NODE_ENV === 'production') {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
-router.use(notFoundError);
-router.use(serverError);
+app.use(notFoundError);
+app.use(serverError);
 
 module.exports = app;
