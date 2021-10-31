@@ -16,11 +16,15 @@ const editEstate = async (req, res, next) => {
     );
 
     if (rowCount === 0) {
-      return res.status(400).json({ status: 400, message: 'enter valid estate id ' });
+      res.status(400).json({ status: 400, message: 'enter valid estate id ' });
     }
     res.json({ message: 'Estate updated successfully' });
   } catch (err) {
-    next(err);
+    if (err.details) {
+      res.status(400).json({ status: 400, message: err.details.message });
+    } else {
+      next(err);
+    }
   }
 };
 module.exports = editEstate;

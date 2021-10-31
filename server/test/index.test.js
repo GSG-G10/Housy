@@ -103,7 +103,31 @@ describe('user estates', () => {
       .expect('Content-Type', /json/);
     return expect(res.body.message).toBe('Estate updated successfully');
   });
+
+  test('edit estates erorr', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/estate/350')
+      .send({
+        title: '1',
+        price: 10,
+        description: 's',
+        type: 's',
+        category: 's',
+        street: 's',
+        city: 's',
+        region: 's',
+        bathrooms: 1,
+        bedrooms: 1,
+        rooms: 1,
+        space: 50,
+        available: false,
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body.message).toBe('enter valid estate id ');
+  });
 });
+
 describe('test signup endpoint with all cases ', () => {
   test('test sign up endpoint when success', async () => {
     const res = await supertest(app)
