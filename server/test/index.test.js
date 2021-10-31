@@ -7,7 +7,7 @@ const connection = require('../database/config/connection');
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
-describe('Tests Server', () => {
+describe('Get all users', () => {
   test('get all users', async () => {
     const res = await supertest(app)
       .get('/api/v1/users')
@@ -15,7 +15,9 @@ describe('Tests Server', () => {
       .expect('Content-Type', /json/);
     return expect(3).toEqual(res.body.data.length);
   });
+});
 
+describe('Tests login route', () => {
   test(' login route /login ', async () => {
     const res = await supertest(app)
       .post('/api/v1/login')
@@ -24,7 +26,7 @@ describe('Tests Server', () => {
         password: '12345',
       })
       .expect(200);
-    expect(res.body).toEqual({ message: 'You are Logged Successfully' });
+    return expect(res.body).toEqual({ message: 'You are Logged Successfully' });
   });
 
   test(' login route /login with error in email or password ', async () => {
@@ -35,7 +37,7 @@ describe('Tests Server', () => {
         password: '123456987',
       })
       .expect(400);
-    expect(res.body).toEqual({ message: 'Invalid email or password' });
+    return expect(res.body).toEqual({ message: 'Invalid email or password' });
   });
 });
 
@@ -45,7 +47,6 @@ describe('user estates', () => {
       .get('/api/v1/users/3/estates')
       .expect(200)
       .expect('Content-Type', /json/);
-
     return expect(res.body).toEqual({
       data: [
         {
@@ -87,6 +88,7 @@ describe('user estates', () => {
           available: false,
         },
       ],
+
     });
   });
 });
@@ -102,7 +104,83 @@ describe('user estates', () => {
     });
   });
 });
+describe('user estates', () => {
+  test('edit estates', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/estate/3')
+      .send({
+        title: '1',
+        price: 10,
+        description: 's',
+        type: 's',
+        category: 's',
+        street: 's',
+        city: 's',
+        region: 's',
+        bathrooms: 1,
+        bedrooms: 1,
+        rooms: 1,
+        space: 50,
+        available: false,
+      })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    return expect(res.body.message).toBe('Estate updated successfully');
+  });
 
+  test('edit estates erorr', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/estate/350')
+      .send({
+        title: '1',
+        price: 10,
+        description: 's',
+        type: 's',
+        category: 's',
+        street: 's',
+        city: 's',
+        region: 's',
+        bathrooms: 1,
+        bedrooms: 1,
+        rooms: 1,
+        space: 50,
+        available: false,
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body.message).toBe('enter valid estate id ');
+  });
+});
+
+describe('Delete Specific Estate By Using Id', () => {
+  test('/estate/:estateId status 200 ', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/estate/1')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'Estate deleted successfully',
+    });
+  });
+  test('/estate/:estateId status 400, when delete the same estate was deleted or not found ', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/estate/100')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'You can\'t complete this process at the moment',
+    });
+  });
+  test('/estate/:estateId status 400, Invalid estate id ', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/estate/-121')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'Invalid estate id',
+    });
+  });
+});
 describe('test signup endpoint with all cases ', () => {
   test('test sign up endpoint when success', async () => {
     const res = await supertest(app)
@@ -154,6 +232,7 @@ describe('test signup endpoint with all cases ', () => {
       message: 'The user is already exists',
     });
   });
+
   test('test signup confirmpassword ', async () => {
     const res = await supertest(app)
       .post('/api/v1/users/signup')
