@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable consistent-return */
 const bcrypt = require('bcrypt');
 const { loginSchema } = require('../../utils/validation/loginSchema');
