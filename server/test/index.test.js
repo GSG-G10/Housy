@@ -81,8 +81,8 @@ describe('user estates', () => {
   });
 });
 describe('user estates', () => {
-  test('edit estates', (done) => {
-    supertest(app)
+  test('edit estates', async () => {
+    const res = await supertest(app)
       .put('/api/v1/estate/3')
       .send({
         title: '1',
@@ -100,12 +100,8 @@ describe('user estates', () => {
         available: false,
       })
       .expect(200)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.body.status).toBe(200);
-        return done();
-      });
+      .expect('Content-Type', /json/);
+    return expect(res.body.message).toBe('Estate updated successfully');
   });
 });
 describe('test signup endpoint with all cases ', () => {

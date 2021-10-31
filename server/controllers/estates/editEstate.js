@@ -9,16 +9,16 @@ const editEstate = async (req, res, next) => {
       bathrooms, bedrooms, rooms, space, available,
     } = await editEstateValidation.validateAsync({ ...req.body, ...req.params });
 
-    const editResult = await editEstateQuery(
+    const { rowCount } = await editEstateQuery(
       estateId, title, price, description, type,
       category, street, city, region, bathrooms,
       bedrooms, rooms, space, available,
     );
-    if (editResult.rowCount === 0) {
-      res.status(406).json({ status: 406, msg: 'enter valid estate id ' });
-    }
 
-    res.json({ status: 200 });
+    if (rowCount === 0) {
+      return res.status(400).json({ status: 400, message: 'enter valid estate id ' });
+    }
+    res.json({ message: 'Estate updated successfully' });
   } catch (err) {
     next(err);
   }
