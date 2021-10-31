@@ -1,7 +1,9 @@
 const router = require('express').Router();
 
-const { editEstate } = require('../controllers/estates/index');
+const { isAuth, isAdmin } = require('../middleware');
+const { editEstate, deleteEstate } = require('../controllers');
 
-router.put('/estate/:estateId', editEstate);
+router.put('/:estateId', isAuth, editEstate);
 
+router.delete('/:estateId', isAuth, deleteEstate);
 module.exports = router;

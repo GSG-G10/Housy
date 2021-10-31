@@ -1,11 +1,10 @@
 const router = require('express').Router();
-
-const auth = require('./auth');
-const users = require('./users');
+const { logout } = require('../controllers');
 const estate = require('./estate');
+const users = require('./users');
 
-router.use('/', estate);
-router.use('/', auth);
 router.use('/users', users);
+router.use('/estate', estate);
+router.get('/logout', logout);
 
 module.exports = router;
