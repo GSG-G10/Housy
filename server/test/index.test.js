@@ -7,13 +7,37 @@ const connection = require('../database/config/connection');
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
-describe('Tests Server', () => {
+describe('Get all users', () => {
   test('get all users', async () => {
     const res = await supertest(app)
       .get('/api/v1/users')
       .expect(200)
       .expect('Content-Type', /json/);
     return expect(3).toEqual(res.body.data.length);
+  });
+});
+
+describe('Tests login route', () => {
+  test(' login route /login ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/login')
+      .send({
+        email: 'kallport0@patch.com',
+        password: '12345',
+      })
+      .expect(200);
+    return expect(res.body).toEqual({ message: 'You are Logged Successfully' });
+  });
+
+  test(' login route /login with error in email or password ', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/login')
+      .send({
+        email: 'kallport0@patch.com',
+        password: '123456987',
+      })
+      .expect(400);
+    return expect(res.body).toEqual({ message: 'Invalid email or password' });
   });
 });
 
