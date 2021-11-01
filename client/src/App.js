@@ -1,11 +1,12 @@
-import {Search} from "./components"
+import { Search } from './components';
+
 function App() {
   return (
-    <div className="App" >
+    <div className="App">
       <Search />
-      
+
     </div>
-   
+
   );
 }
 
