@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { signupAdmin } = require('../controllers/admins');
 
-router.post('/signupadmin', signupAdmin);
+router.post('/signup', signupAdmin);
 
 module.exports = router;

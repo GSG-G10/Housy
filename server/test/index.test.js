@@ -254,7 +254,7 @@ describe('test signup endpoint with all cases ', () => {
 describe('test signup as admin ', () => {
   test('test sign up endpoint when success', async () => {
     const res = await supertest(app)
-      .post('/api/v1/admin/signupadmin')
+      .post('/api/v1/admin/signup')
       .send({
         username: 'test',
         password: 'test123456',
