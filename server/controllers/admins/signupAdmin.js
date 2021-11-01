@@ -1,6 +1,6 @@
 const { hash } = require('bcrypt');
 const adminSchema = require('../../utils/validation/adminSchema');
-const signUpAdminQuery = require('../../database/quieres');
+const { signUpAdminQuery } = require('../../database/quieres');
 const { signToken } = require('../../utils');
 
 module.exports = async (req, res, next) => {

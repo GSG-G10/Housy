@@ -250,3 +250,21 @@ describe('test signup endpoint with all cases ', () => {
     });
   });
 });
+
+describe('test signup as admin ', () => {
+  test('test sign up endpoint when success', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/admin/signupadmin')
+      .send({
+        username: 'test',
+        password: 'test123456',
+        email: 'test@gmail.com',
+      })
+      .expect(201)
+      .expect((response) => expect(response.header['set-cookie'][0].split('=')[0]).toBe('token'))
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'user created',
+    });
+  });
+});
