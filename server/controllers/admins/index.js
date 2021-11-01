@@ -1,3 +1,7 @@
+const adminLogin = require('./login');
 const signupAdmin = require('./signupAdmin');
 
-module.exports = { signupAdmin };
+module.exports = {
+  adminLogin,
+  signupAdmin,
+};
