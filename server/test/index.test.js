@@ -44,7 +44,7 @@ describe('Tests login route', () => {
 describe('Tests login route to  admin', () => {
   test(' login route /login ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/adminLogin')
+      .post('/api/v1/admin/login')
       .send({
         email: 'mohmsal96@gmail.com',
         password: '1234567894455',
@@ -55,7 +55,7 @@ describe('Tests login route to  admin', () => {
 
   test(' login route /login with error in email or password ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/adminLogin')
+      .post('/api/v1/admin/login')
       .send({
         email: 'msal96@gmail.com',
         password: '1234566',
@@ -271,6 +271,24 @@ describe('test signup endpoint with all cases ', () => {
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
       message: '"confirmedPassword" must be [ref:password]',
+    });
+  });
+});
+
+describe('test signup as admin ', () => {
+  test('test sign up endpoint when success', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/admin/signup')
+      .send({
+        username: 'test',
+        password: 'test123456',
+        email: 'test@gmail.com',
+      })
+      .expect(201)
+      .expect((response) => expect(response.header['set-cookie'][0].split('=')[0]).toBe('token'))
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'user created',
     });
   });
 });
