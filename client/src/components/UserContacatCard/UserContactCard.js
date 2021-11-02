@@ -26,7 +26,9 @@ const useStyles = makeStyles({
   },
 });
 const contentStyles = { display: 'flex', marginBottom: '15px', alignItems: 'center' };
-function userContactCard({ image }) {
+function userContactCard({
+  image, name, location, phone, email,
+}) {
   const classes = useStyles();
 
   return (
@@ -39,7 +41,7 @@ function userContactCard({ image }) {
       />
       <CardContent className={classes.card}>
         <Typography gutterBottom variant="h5" component="div">
-          Mohammed haroon
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Building Owner
@@ -50,17 +52,17 @@ function userContactCard({ image }) {
 
         <Typography sx={contentStyles} variant="body2" color="text.secondary">
           <LocationOnIcon className={classes.icon} />
-          gaza , palestine
+          {location}
         </Typography>
 
         <Typography sx={contentStyles} variant="body2" color="text.secondary">
           <MdPhone className={classes.icon} />
-          +970595222222
+          {phone}
         </Typography>
 
         <Typography sx={contentStyles} variant="body2" color="text.secondary">
           <EmailIcon className={classes.icon} />
-          info@gmail.com
+          {email}
         </Typography>
 
       </CardContent>
