@@ -1,9 +1,9 @@
-import { Search } from './components';
+import { CardHouse } from './components';
 
 function App() {
   return (
     <div className="App">
-      <Search />
+      <CardHouse />
 
     </div>
 
