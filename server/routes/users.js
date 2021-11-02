@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { userEstateshandler, getAllUsers, logout } = require('../controllers');
+const { userEstateshandler, getAllUsers } = require('../controllers');
 const estate = require('./estate');
 const signup = require('../controllers/users/signup');
 
