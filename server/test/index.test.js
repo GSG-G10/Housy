@@ -10,7 +10,7 @@ afterAll(() => connection.end());
 describe('Get all users', () => {
   test('get all users', async () => {
     const res = await supertest(app)
-      .get('/api/v1/users')
+      .get('/api/v1/user')
       .expect(200)
       .expect('Content-Type', /json/);
     return expect(3).toEqual(res.body.data.length);
@@ -44,7 +44,7 @@ describe('Tests login route', () => {
 describe('user estates', () => {
   test('get users estates', async () => {
     const res = await supertest(app)
-      .get('/api/v1/users/3/estates')
+      .get('/api/v1/user/3/estates')
       .expect(200)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
@@ -96,7 +96,7 @@ describe('user estates', () => {
 describe('user estates', () => {
   test('get users estates', async () => {
     const res = await supertest(app)
-      .get('/api/v1/users/three/estates')
+      .get('/api/v1/user/three/estates')
       .expect(404)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
@@ -185,7 +185,7 @@ describe('Delete Specific Estate By Using Id', () => {
 describe('test signup endpoint with all cases ', () => {
   test('test sign up endpoint when success', async () => {
     const res = await supertest(app)
-      .post('/api/v1/users/signup')
+      .post('/api/v1/user/signup')
       .send({
         username: 'test',
         password: 'test123456',
@@ -203,7 +203,7 @@ describe('test signup endpoint with all cases ', () => {
 
   test('test signup error validation phone" length must be 10 characters long ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/users/signup')
+      .post('/api/v1/user/signup')
       .send({
         username: 'Kai',
         password: '1234567894455',
@@ -219,7 +219,7 @@ describe('test signup endpoint with all cases ', () => {
   });
   test('test signup username or phone already exists ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/users/signup')
+      .post('/api/v1/user/signup')
       .send({
         username: 'Kai',
         password: '1234567894455',
@@ -236,7 +236,7 @@ describe('test signup endpoint with all cases ', () => {
 
   test('test signup confirmpassword ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/users/signup')
+      .post('/api/v1/user/signup')
       .send({
         username: 'test',
         password: 'test123456',
@@ -252,10 +252,10 @@ describe('test signup endpoint with all cases ', () => {
   });
 });
 
-describe('test Edit Agent data /users/:iduser  ', () => {
+describe('test Edit Agent data /user/:iduser  ', () => {
   test('test 200', async () => {
     const res = await supertest(app)
-      .put('/api/v1/users/1')
+      .put('/api/v1/user/1')
       .send({
         username: 'test',
         email: 'kallport0@patch.com',
@@ -270,7 +270,7 @@ describe('test Edit Agent data /users/:iduser  ', () => {
 
   test('test 400', async () => {
     const res = await supertest(app)
-      .put('/api/v1/users/1')
+      .put('/api/v1/user/1')
       .send({
         username: 'test',
         email: 'kallport0@patch.com',
@@ -284,7 +284,7 @@ describe('test Edit Agent data /users/:iduser  ', () => {
   });
   test('test 404', async () => {
     const res = await supertest(app)
-      .put('/api/v1/users/400')
+      .put('/api/v1/user/400')
       .send({
         username: 'test',
         email: 'kallport0@patch.com',

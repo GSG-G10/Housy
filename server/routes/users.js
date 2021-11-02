@@ -1,14 +1,15 @@
 const router = require('express').Router();
 const {
-  userEstateshandler, getAllUsers, logout, putAgent,
+  userEstateshandler, getAllUsers, putAgent,
 } = require('../controllers');
 const estate = require('./estate');
 const signup = require('../controllers/users/signup');
+const { isAuth } = require('../middleware');
 
 router.use('/estate', estate);
 router.post('/signup', signup);
 router.get('/:userId/estates', userEstateshandler);
-router.put('/:userId', putAgent);
+router.put('/:userId', isAuth, putAgent);
 router.get('/', getAllUsers);
 
 module.exports = router;
