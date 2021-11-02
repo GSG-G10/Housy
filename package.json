@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/GSG-G10/Housy#readme",
   "dependencies": {
+    "@mui/icons-material": "^5.0.5",
     "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
@@ -29,7 +30,8 @@
     "express": "^4.17.1",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
