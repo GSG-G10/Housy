@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import "./style.css"
-function Search() {
-    return (
-        <div>
-            Hello
-        </div>
-    )
-}
-
-export default Search
-=======
 import { Container, Button, TextField } from '@mui/material';
 import { marker, money, room } from '../../assets';
 import './style.css';
@@ -78,4 +65,3 @@ function Search() {
 }
 
 export default Search;
->>>>>>> 7698c3f01aafec919de73f27b26cee8de9d7d3c4
