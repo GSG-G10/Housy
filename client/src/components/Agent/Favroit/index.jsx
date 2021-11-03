@@ -13,7 +13,7 @@ import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import House from '../../../asstes/house.jpeg';
+import House from '../../../assetes/house.jpeg';
 
 const AgenteFavariot = () => (
   <Container

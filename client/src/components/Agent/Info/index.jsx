@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 import {
   Container, Avatar,
@@ -10,10 +11,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import EmailIcon from '@mui/icons-material/Email';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import PropTypes from 'prop-types';
 
-import PresonImg from '../../../asstes/avatar.png';
+import PresonImg from '../../../assetes/avatar.png';
 
-const AgentInfo = () => (
+const AgentInfo = ({
+  name, email, phone, avater,
+}) => (
   <Container
     maxWidth="xl"
     sx={{
@@ -43,13 +47,12 @@ const AgentInfo = () => (
       }}
       >
         <Avatar
-          src={PresonImg}
+          src={avater === null ? PresonImg : avater}
           sx={{
             width: 100,
             height: 100,
             margin: 1,
           }}
-
         />
         <CardContent sx={{
           display: 'flex', flexDirection: 'column', width: '100%',
@@ -57,12 +60,12 @@ const AgentInfo = () => (
         >
 
           <Typography sx={{ mb: 1.5, fontSize: 18 }}>
-            Mohammed M. Salah
+            {name}
           </Typography>
           <Typography component="div" sx={{ mb: 1.5, display: 'flex', flexDirection: 'row' }}>
             <PhoneAndroidIcon />
             {' '}
-            0597777777
+            {phone}
           </Typography>
           <Typography sx={{ mb: 1.5, display: 'flex', flexDirection: 'row' }}>
 
@@ -72,7 +75,7 @@ const AgentInfo = () => (
           <Typography sx={{ mb: 1.5, display: 'flex', flexDirection: 'row' }}>
 
             <EmailIcon />
-            moh2020@gmail.com
+            {email}
           </Typography>
 
         </CardContent>
@@ -97,5 +100,11 @@ const AgentInfo = () => (
 
   </Container>
 );
+AgentInfo.propTypes = {
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  avater: PropTypes.string.isRequired,
+};
 
 export default AgentInfo;

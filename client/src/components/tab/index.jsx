@@ -1,7 +1,7 @@
-/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -46,7 +46,7 @@ function a11yProps(index) {
   };
 }
 
-export default function ProfileTabs() {
+export default function ProfileTabs({ data }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -69,7 +69,7 @@ export default function ProfileTabs() {
         <StaticEstate />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <AgenteEstate />
+        <AgenteEstate data={data} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <PenddingEstate />
