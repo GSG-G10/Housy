@@ -7,6 +7,8 @@ const connection = require('../database/config/connection');
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
+const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGxwb3J0MEBwYXRjaC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTYzNTk0OTE4OX0.LjriIEoRDmj3_52PO8VlsaqekFiItE7gzamngrlaPDk';
+
 describe('Get all users', () => {
   test('get all users', async () => {
     const res = await supertest(app)
@@ -20,10 +22,10 @@ describe('Get all users', () => {
 describe('Tests login route', () => {
   test(' login route /login ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/login')
+      .post('/api/v1/user/login')
       .send({
         email: 'kallport0@patch.com',
-        password: '12345',
+        password: '123456789',
       })
       .expect(200);
     return expect(res.body).toEqual({ message: 'You are Logged Successfully' });
@@ -31,7 +33,7 @@ describe('Tests login route', () => {
 
   test(' login route /login with error in email or password ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/login')
+      .post('/api/v1/user/login')
       .send({
         email: 'kallport0@patch.com',
         password: '123456987',
@@ -180,6 +182,7 @@ describe('Delete Specific Estate By Using Id', () => {
   test('/estate/:estateId status 200 ', async () => {
     const res = await supertest(app)
       .delete('/api/v1/estate/1')
+      .set('Cookie', [`token=${userToken}`])
       .expect(200)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
@@ -189,6 +192,7 @@ describe('Delete Specific Estate By Using Id', () => {
   test('/estate/:estateId status 400, when delete the same estate was deleted or not found ', async () => {
     const res = await supertest(app)
       .delete('/api/v1/estate/100')
+      .set('Cookie', [`token=${userToken}`])
       .expect(400)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
@@ -198,6 +202,7 @@ describe('Delete Specific Estate By Using Id', () => {
   test('/estate/:estateId status 400, Invalid estate id ', async () => {
     const res = await supertest(app)
       .delete('/api/v1/estate/-121')
+      .set('Cookie', [`token=${userToken}`])
       .expect(400)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
@@ -279,7 +284,8 @@ describe('test signup endpoint with all cases ', () => {
 describe('test Edit Agent data /user/:iduser  ', () => {
   test('test 200', async () => {
     const res = await supertest(app)
-      .put('/api/v1/user/1')
+      .put('/api/v1/user')
+      .set('Cookie', [`token=${userToken}`])
       .send({
         username: 'test',
         email: 'kallport0@patch.com',
@@ -294,7 +300,8 @@ describe('test Edit Agent data /user/:iduser  ', () => {
 
   test('test 400', async () => {
     const res = await supertest(app)
-      .put('/api/v1/user/1')
+      .put('/api/v1/user')
+      .set('Cookie', [`token=${userToken}`])
       .send({
         username: 'test',
         email: 'kallport0@patch.com',
@@ -308,7 +315,8 @@ describe('test Edit Agent data /user/:iduser  ', () => {
   });
   test('test 404', async () => {
     const res = await supertest(app)
-      .put('/api/v1/user/400')
+      .put('/api/v1/user')
+      .set('Cookie', ['token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdTdhbW1hZGFiZWRAZ21haWwuY29tIiwidXNlcklkIjo0LCJpYXQiOjE2MzU5NDkyNTl9.St177PIpsDIHAVke6PxoGC8_cJmUrggpyhEcJ4QWKfI'])
       .send({
         username: 'test',
         email: 'kallport0@patch.com',
@@ -318,6 +326,10 @@ describe('test Edit Agent data /user/:iduser  ', () => {
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
       message: 'There\'s no Agent, put correct id',
+    });
+  });
+});
+
 describe('test signup as admin ', () => {
   test('test sign up endpoint when success', async () => {
     const res = await supertest(app)
