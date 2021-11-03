@@ -11,7 +11,7 @@ import Logo from '../../asstes/logo.png';
 import PresonImg from '../../asstes/avatar.png';
 
 function NavBar() {
-  const [state, setstate] = useState(true);
+  const [logged, setLogged] = useState(true);
   return (
     <Container maxWidth="xl">
       <nav className="container">
@@ -60,7 +60,7 @@ function NavBar() {
               <ListItemText primary="Host my House" style={{ color: '#fff' }} />
             </Link>
           </Button>
-          {state ? (
+          {logged ? (
             <Link component={RouterLink} to="/">
               <Avatar src={PresonImg} />
             </Link>
