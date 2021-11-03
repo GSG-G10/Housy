@@ -3,6 +3,9 @@
     justify-content: space-between;
        
 }
+.card-house{
+    position: relative;
+}
 .card-house .css-r40f8v-MuiTypography-root{
     font-size: .5rem;
     color: #5F828C;

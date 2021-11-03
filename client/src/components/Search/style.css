@@ -7,6 +7,9 @@
         border-radius: 4px 0px 0px 0px;
         padding: 0.5rem 2rem;
 }
+.search-container.css-19r6kue-MuiContainer-root {
+    width: 95%;
+}
 .search-container .css-sghohy-MuiButtonBase-root-MuiButton-root:hover {
    background-color: #123B65;
    color:#fff;
@@ -21,7 +24,8 @@
         color:#2E72DB;
 }
 .search-container{
-    width:75%
+    width:75%;
+    margin: 0 auto;
 }
 .search-bar{
     background: #fff;
