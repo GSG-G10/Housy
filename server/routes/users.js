@@ -8,6 +8,7 @@ const { isAuth } = require('../middleware');
 
 router.use('/estate', estate);
 router.post('/signup', signup);
+router.post('/login', login);
 router.get('/:userId/estates', userEstateshandler);
 router.put('/', isAuth, putAgent);
 router.get('/', getAllUsers);
