@@ -7,10 +7,12 @@ const connection = require('../database/config/connection');
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
+const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGxwb3J0MEBwYXRjaC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTYzNTk0OTE4OX0.LjriIEoRDmj3_52PO8VlsaqekFiItE7gzamngrlaPDk';
+
 describe('Get all users', () => {
   test('get all users', async () => {
     const res = await supertest(app)
-      .get('/api/v1/users')
+      .get('/api/v1/user')
       .expect(200)
       .expect('Content-Type', /json/);
     return expect(3).toEqual(res.body.data.length);
@@ -20,10 +22,10 @@ describe('Get all users', () => {
 describe('Tests login route', () => {
   test(' login route /login ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/login')
+      .post('/api/v1/user/login')
       .send({
         email: 'kallport0@patch.com',
-        password: '12345',
+        password: '123456789',
       })
       .expect(200);
     return expect(res.body).toEqual({ message: 'You are Logged Successfully' });
@@ -31,7 +33,7 @@ describe('Tests login route', () => {
 
   test(' login route /login with error in email or password ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/login')
+      .post('/api/v1/user/login')
       .send({
         email: 'kallport0@patch.com',
         password: '123456987',
@@ -68,7 +70,7 @@ describe('Tests login route to  admin', () => {
 describe('user estates', () => {
   test('get users estates', async () => {
     const res = await supertest(app)
-      .get('/api/v1/users/3/estates')
+      .get('/api/v1/user/3/estates')
       .expect(200)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
@@ -120,7 +122,7 @@ describe('user estates', () => {
 describe('user estates', () => {
   test('get users estates', async () => {
     const res = await supertest(app)
-      .get('/api/v1/users/three/estates')
+      .get('/api/v1/user/three/estates')
       .expect(404)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
@@ -180,6 +182,7 @@ describe('Delete Specific Estate By Using Id', () => {
   test('/estate/:estateId status 200 ', async () => {
     const res = await supertest(app)
       .delete('/api/v1/estate/1')
+      .set('Cookie', [`token=${userToken}`])
       .expect(200)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
@@ -189,6 +192,7 @@ describe('Delete Specific Estate By Using Id', () => {
   test('/estate/:estateId status 400, when delete the same estate was deleted or not found ', async () => {
     const res = await supertest(app)
       .delete('/api/v1/estate/100')
+      .set('Cookie', [`token=${userToken}`])
       .expect(400)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
@@ -198,6 +202,7 @@ describe('Delete Specific Estate By Using Id', () => {
   test('/estate/:estateId status 400, Invalid estate id ', async () => {
     const res = await supertest(app)
       .delete('/api/v1/estate/-121')
+      .set('Cookie', [`token=${userToken}`])
       .expect(400)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
@@ -205,10 +210,11 @@ describe('Delete Specific Estate By Using Id', () => {
     });
   });
 });
+
 describe('test signup endpoint with all cases ', () => {
   test('test sign up endpoint when success', async () => {
     const res = await supertest(app)
-      .post('/api/v1/users/signup')
+      .post('/api/v1/user/signup')
       .send({
         username: 'test',
         password: 'test123456',
@@ -226,7 +232,7 @@ describe('test signup endpoint with all cases ', () => {
 
   test('test signup error validation phone" length must be 10 characters long ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/users/signup')
+      .post('/api/v1/user/signup')
       .send({
         username: 'Kai',
         password: '1234567894455',
@@ -242,7 +248,7 @@ describe('test signup endpoint with all cases ', () => {
   });
   test('test signup username or phone already exists ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/users/signup')
+      .post('/api/v1/user/signup')
       .send({
         username: 'Kai',
         password: '1234567894455',
@@ -259,7 +265,7 @@ describe('test signup endpoint with all cases ', () => {
 
   test('test signup confirmpassword ', async () => {
     const res = await supertest(app)
-      .post('/api/v1/users/signup')
+      .post('/api/v1/user/signup')
       .send({
         username: 'test',
         password: 'test123456',
@@ -271,6 +277,55 @@ describe('test signup endpoint with all cases ', () => {
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
       message: '"confirmedPassword" must be [ref:password]',
+    });
+  });
+});
+
+describe('test Edit Agent data /user/:iduser  ', () => {
+  test('test 200', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/user')
+      .set('Cookie', [`token=${userToken}`])
+      .send({
+        username: 'test',
+        email: 'kallport0@patch.com',
+        phone: '059985555555',
+      })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'Agent\'s data updated successfully',
+    });
+  });
+
+  test('test 400', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/user')
+      .set('Cookie', [`token=${userToken}`])
+      .send({
+        username: 'test',
+        email: 'kallport0@patch.com',
+        phone: '0599',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: '"phone" length must be at least 9 characters long',
+    });
+  });
+  test('test 404', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/user')
+      .set('Cookie', ['token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdTdhbW1hZGFiZWRAZ21haWwuY29tIiwidXNlcklkIjo0LCJpYXQiOjE2MzU5NDkyNTl9.St177PIpsDIHAVke6PxoGC8_cJmUrggpyhEcJ4QWKfI'])
+      .send({
+        username: 'test',
+        email: 'kallport0@patch.com',
+        phone: '059915587555',
+      })
+      .expect(404)
+      .expect('Content-Type', /json/);
+    return expect(res.body).toEqual({
+      message: 'There\'s no Agent, put correct id',
     });
   });
 });
