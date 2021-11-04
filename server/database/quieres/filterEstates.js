@@ -12,10 +12,10 @@ module.exports = ({
 }) => connection.query(`
     SELECT * FROM estates
     WHERE type = $1
-    AND category = $2
-    AND city = $3
-    AND price BETWEEN $4 AND $5
-    AND rooms = $6
-    AND bathrooms = $7
-    AND bedrooms = $8
+    OR category = $2
+    OR city = $3
+    OR price BETWEEN $4 AND $5
+    OR rooms = $6
+    OR bathrooms = $7
+    OR bedrooms = $8
     `, [type, category, location, minPrice, maxPrice, numberOfRooms, numberOfBathrooms, numberOfBedrooms]);
