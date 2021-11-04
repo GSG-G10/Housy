@@ -1,11 +1,11 @@
-import {Search} from "./components"
+import { Footer } from './components';
+
 function App() {
   return (
-    <div className="App" >
-      <Search />
-      
+    <div className="App">
+      <Footer />
     </div>
-   
+
   );
 }
 

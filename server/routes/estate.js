@@ -1,9 +1,8 @@
 const router = require('express').Router();
-
-// const { isAuth, isAdmin } = require('../middleware');
 const { editEstate, deleteEstate, filterEstate } = require('../controllers');
+const { isAuth } = require('../middleware');
 
 router.get('/search', filterEstate);
 router.put('/:estateId', editEstate);
-router.delete('/:estateId', deleteEstate);
+router.delete('/:estateId', isAuth, deleteEstate);
 module.exports = router;
