@@ -7,7 +7,7 @@ const connection = require('../database/config/connection');
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
-const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGxwb3J0MEBwYXRjaC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTYzNTk0OTE4OX0.LjriIEoRDmj3_52PO8VlsaqekFiItE7gzamngrlaPDk';
+const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEifQ.ABHyuVZkr37lK6lelg18vAFAApbMj6KGTGhEbm9ROg4';
 
 describe('Get all users', () => {
   test('get all users', async () => {
@@ -15,7 +15,7 @@ describe('Get all users', () => {
       .get('/api/v1/user')
       .expect(200)
       .expect('Content-Type', /json/);
-    return expect(3).toEqual(res.body.data.length);
+    return expect(5).toEqual(res.body.data.length);
   });
 });
 
@@ -43,30 +43,6 @@ describe('Tests login route', () => {
   });
 });
 
-describe('Tests login route to  admin', () => {
-  test(' login route /login ', async () => {
-    const res = await supertest(app)
-      .post('/api/v1/admin/login')
-      .send({
-        email: 'mohmsal96@gmail.com',
-        password: '1234567894455',
-      })
-      .expect(200);
-    return expect(res.body).toEqual({ message: 'You are Logged Successfully' });
-  });
-
-  test(' login route /login with error in email or password ', async () => {
-    const res = await supertest(app)
-      .post('/api/v1/admin/login')
-      .send({
-        email: 'msal96@gmail.com',
-        password: '1234566',
-      })
-      .expect(400);
-    return expect(res.body).toEqual({ message: 'Invalid email or password' });
-  });
-});
-
 describe('user estates', () => {
   test('get users estates', async () => {
     const res = await supertest(app)
@@ -78,21 +54,21 @@ describe('user estates', () => {
         {
           id: 3,
           agent_id: 3,
-          title: 'rhoncus sed vestibulum',
-          price: '84726.00',
-          description: 'massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in',
-          type: 'Buy',
-          category: 'House',
+          title: 'Amazing house in Galilee',
+          price: '847.00',
+          description: 'Big beautiful stonehouse with garden and balcony with breathtaking view. A large fireplace and cousy livingroom. A lot of plants and artistic decoration. Harashim lays on top of a mountain in Galilee. Great for relaxing vacation and sightseeing.',
+          type: 'sale',
+          category: 'villa',
           street: '0824 Mcguire Way',
           city: 'Kungshamn',
-          region: 'Sweden',
+          region: 'Galilee',
           bathrooms: 1,
           bedrooms: 3,
           rooms: 3,
           space: '235',
           approved: true,
-          rate: 5,
-          available: false,
+          rate: '5',
+          available: true,
         },
         {
           id: 6,
@@ -100,8 +76,8 @@ describe('user estates', () => {
           title: 'vestibulum ante ipsum primis',
           price: '194193.55',
           description: 'leo odio porttitor id consequat in consequat ut nulla sed',
-          type: 'Buy',
-          category: 'House',
+          type: 'sale',
+          category: 'whole house',
           street: '0891 7th Park',
           city: 'Álimos',
           region: 'Greece',
@@ -110,7 +86,7 @@ describe('user estates', () => {
           rooms: 2,
           space: '174',
           approved: false,
-          rate: 1,
+          rate: '1',
           available: false,
         },
       ],
@@ -130,87 +106,6 @@ describe('user estates', () => {
     });
   });
 });
-describe('user estates', () => {
-  test('edit estates', async () => {
-    const res = await supertest(app)
-      .put('/api/v1/estate/3')
-      .send({
-        title: '1',
-        price: 10,
-        description: 's',
-        type: 's',
-        category: 's',
-        street: 's',
-        city: 's',
-        region: 's',
-        bathrooms: 1,
-        bedrooms: 1,
-        rooms: 1,
-        space: 50,
-        available: false,
-      })
-      .expect(200)
-      .expect('Content-Type', /json/);
-    return expect(res.body.message).toBe('Estate updated successfully');
-  });
-
-  test('edit estates erorr', async () => {
-    const res = await supertest(app)
-      .put('/api/v1/estate/350')
-      .send({
-        title: '1',
-        price: 10,
-        description: 's',
-        type: 's',
-        category: 's',
-        street: 's',
-        city: 's',
-        region: 's',
-        bathrooms: 1,
-        bedrooms: 1,
-        rooms: 1,
-        space: 50,
-        available: false,
-      })
-      .expect(400)
-      .expect('Content-Type', /json/);
-    return expect(res.body.message).toBe('enter valid estate id ');
-  });
-});
-
-describe('Delete Specific Estate By Using Id', () => {
-  test('/estate/:estateId status 200 ', async () => {
-    const res = await supertest(app)
-      .delete('/api/v1/estate/1')
-      .set('Cookie', [`token=${userToken}`])
-      .expect(200)
-      .expect('Content-Type', /json/);
-    return expect(res.body).toEqual({
-      message: 'Estate deleted successfully',
-    });
-  });
-  test('/estate/:estateId status 400, when delete the same estate was deleted or not found ', async () => {
-    const res = await supertest(app)
-      .delete('/api/v1/estate/100')
-      .set('Cookie', [`token=${userToken}`])
-      .expect(400)
-      .expect('Content-Type', /json/);
-    return expect(res.body).toEqual({
-      message: 'You can\'t complete this process at the moment',
-    });
-  });
-  test('/estate/:estateId status 400, Invalid estate id ', async () => {
-    const res = await supertest(app)
-      .delete('/api/v1/estate/-121')
-      .set('Cookie', [`token=${userToken}`])
-      .expect(400)
-      .expect('Content-Type', /json/);
-    return expect(res.body).toEqual({
-      message: 'Invalid estate id',
-    });
-  });
-});
-
 describe('test signup endpoint with all cases ', () => {
   test('test sign up endpoint when success', async () => {
     const res = await supertest(app)
@@ -229,7 +124,6 @@ describe('test signup endpoint with all cases ', () => {
       message: 'user created',
     });
   });
-
   test('test signup error validation phone" length must be 10 characters long ', async () => {
     const res = await supertest(app)
       .post('/api/v1/user/signup')
@@ -280,7 +174,6 @@ describe('test signup endpoint with all cases ', () => {
     });
   });
 });
-
 describe('test Edit Agent data /user/:iduser  ', () => {
   test('test 200', async () => {
     const res = await supertest(app)
@@ -313,7 +206,7 @@ describe('test Edit Agent data /user/:iduser  ', () => {
       message: '"phone" length must be at least 9 characters long',
     });
   });
-  test('test 404', async () => {
+  test('test 400 when user unknown get token for another user  ', async () => {
     const res = await supertest(app)
       .put('/api/v1/user')
       .set('Cookie', ['token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdTdhbW1hZGFiZWRAZ21haWwuY29tIiwidXNlcklkIjo0LCJpYXQiOjE2MzU5NDkyNTl9.St177PIpsDIHAVke6PxoGC8_cJmUrggpyhEcJ4QWKfI'])
@@ -322,28 +215,10 @@ describe('test Edit Agent data /user/:iduser  ', () => {
         email: 'kallport0@patch.com',
         phone: '059915587555',
       })
-      .expect(404)
+      .expect(401)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
-      message: 'There\'s no Agent, put correct id',
-    });
-  });
-});
-
-describe('test signup as admin ', () => {
-  test('test sign up endpoint when success', async () => {
-    const res = await supertest(app)
-      .post('/api/v1/admin/signup')
-      .send({
-        username: 'test',
-        password: 'test123456',
-        email: 'test@gmail.com',
-      })
-      .expect(201)
-      .expect((response) => expect(response.header['set-cookie'][0].split('=')[0]).toBe('token'))
-      .expect('Content-Type', /json/);
-    return expect(res.body).toEqual({
-      message: 'user created',
+      message: 'You are not authorized ',
     });
   });
 });
