@@ -31,7 +31,7 @@ CREATE TABLE estates(
     rooms INTEGER  DEFAULT 0,
     space DECIMAL NOT NULL , 
     approved BOOLEAN DEFAULT FALSE,
-    rate INTEGER DEFAULT 0,
+    rate DECIMAL DEFAULT 0,
     available BOOLEAN DEFAULT TRUE
 );
 
