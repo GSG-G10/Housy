@@ -1,6 +1,6 @@
 import './imageSection.css';
 
-function imageSection({ arr }) {
+function ImageSection({ arr }) {
   const mainImage = arr[0];
   const images = arr.slice(1);
   return (
@@ -25,4 +25,4 @@ function imageSection({ arr }) {
   );
 }
 
-export default imageSection;
+export default ImageSection;
