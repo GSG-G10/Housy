@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 const contentStyles = { display: 'flex', marginBottom: '15px', alignItems: 'center' };
-function userContactCard({
+function UserContactCard({
   image, name, location, phone, email,
 }) {
   const classes = useStyles();
@@ -70,4 +70,4 @@ function userContactCard({
   );
 }
 
-export default userContactCard;
+export default UserContactCard;
