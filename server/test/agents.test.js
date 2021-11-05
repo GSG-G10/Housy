@@ -7,7 +7,7 @@ const connection = require('../database/config/connection');
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
-const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEifQ.ABHyuVZkr37lK6lelg18vAFAApbMj6KGTGhEbm9ROg4';
+const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGxwb3J0MEBwYXRjaC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTYzNjExMjAwNH0.o4iDQMffvwmqt47SDb5RifHWBSBK9FyG55cBN_QfcfQ';
 
 describe('Get all users', () => {
   test('get all users', async () => {
