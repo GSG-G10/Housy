@@ -1,0 +1,43 @@
+.section2 {
+  display: flex;
+  width: 60%;
+  height: 100%;
+  align-content: center;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.footer--list {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+
+.footer--list > a {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-align: left;
+}
+.footer--list > a > svg {
+  margin-right: 5px;
+}
+
+.footer--list > p {
+  font-size: 26px;
+  color: #fff;
+  margin-bottom: 40px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.Social * {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.footer {
+  background-color: black;
+}
