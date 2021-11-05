@@ -1,41 +1,30 @@
 .section2 {
   display: flex;
-  width: 50%;
+  width: 60%;
   height: 100%;
   align-content: center;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
+  margin-top: 30px;
 }
 
-.about-us,
-.services,
-.contact-us,
-.social {
+.footer--list {
   display: flex;
   flex-direction: column;
   height: 50%;
 }
 
-.about-us > a,
-.services > a,
-.contact-us > a,
-.social > a {
+.footer--list > a {
   font-size: 24px;
   margin-bottom: 20px;
   font-size: 18px;
   text-align: left;
 }
-.about-us > a > svg,
-.services > a > svg,
-.contact-us > a > svg,
-.social > a > svg {
+.footer--list > a > svg {
   margin-right: 5px;
 }
 
-.about-us > p,
-.services > p,
-.contact-us > p,
-.social > p {
+.footer--list > p {
   font-size: 26px;
   color: #fff;
   margin-bottom: 40px;
@@ -43,8 +32,12 @@
   text-align: left;
 }
 
-.social * {
+.Social * {
   display: flex;
   align-items: center;
   margin-left: 10px;
+}
+
+.footer {
+  background-color: black;
 }
