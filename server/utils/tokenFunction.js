@@ -1,4 +1,5 @@
 const { verify, sign } = require('jsonwebtoken');
+require('env2')('.env');
 
 const {
   env: { ACCESS_TOKEN_SECRET },

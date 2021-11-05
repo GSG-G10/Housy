@@ -1,21 +1,19 @@
 const { hash } = require('bcrypt');
-const agentSchema = require('../../utils/validation/agentSchema');
-const signUpQuery = require('../../database/quieres/account/signUp');
+const adminSchema = require('../../utils/validation/adminSchema');
+const { signUpAdminQuery } = require('../../database/quieres');
 const { signToken } = require('../../utils');
 
 module.exports = async (req, res, next) => {
   try {
     const {
       error, value: {
-        password, email, username, phone,
+        password, email, username,
       },
-    } = agentSchema.validate(req.body);
+    } = adminSchema.validate(req.body);
     if (error) return res.status(400).json({ message: error.details[0].message });
     const hasedPasword = await hash(password, 10);
-    const { rows } = await signUpQuery(username, email, phone, hasedPasword);
-    const token = await signToken({
-      email, username, phone, userId: rows[0].id,
-    });
+    await signUpAdminQuery(username, hasedPasword, email);
+    const token = await signToken(email, username);
     return res.status(201).cookie('token', token).json({ message: 'user created' });
   } catch (err) {
     if (err.code === '23505') {
