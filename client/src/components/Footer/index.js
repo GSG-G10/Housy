@@ -13,7 +13,7 @@ export default function Footer() {
         color="primary"
         sx={{ top: 'auto', bottom: 0 }}
         style={{
-          background: '#3381CB', height: '432px', alignItems: 'center',
+          background: '#3381CB', alignItems: 'center',
         }}
       >
         <Container
@@ -21,8 +21,6 @@ export default function Footer() {
           sx={{
             display: 'flex',
             justifyContent: 'space-around',
-            marginTop: '10px',
-            height: '100%',
             alignItems: 'center',
           }}
         >
@@ -35,16 +33,16 @@ export default function Footer() {
             />
 
           </div>
-          <div className="wrapper-links">
+          <div className="wrapper-links section2">
             {
-            data.map(({ title, links }) => (
-              <div className={`${title}`}>
+            data.map(({ title, links }, i) => (
+              <div className={`${title} footer--list`} key={`${title + links + i}`}>
                 <p>
                   {title}
                 </p>
                 {
                   links.map(({ href, name, children }) => (
-                    <Link to={href} color="inherit" underline="none">
+                    <Link to={href} color="inherit" underline="none" key={`${href + name + i}`}>
                       {children}
                       {name}
                     </Link>
