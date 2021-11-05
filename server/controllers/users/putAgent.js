@@ -3,7 +3,7 @@ const editAgentSchema = require('../../utils/validation/editAgentSchema');
 
 module.exports = async (req, res, next) => {
   try {
-    const { id: userId } = req.user;
+    const { userId } = req.user;
     const { error, value } = editAgentSchema.validate({ ...req.body, userId });
     if (error) return res.status(400).json({ message: error.details[0].message });
     const { rowCount } = await putAgent(value);
