@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 import {
   ListItem, ListItemText, Button, Avatar, Container, List,
 } from '@mui/material';
@@ -15,7 +14,7 @@ function NavBar() {
   return (
     <Container maxWidth="xl">
       <nav className="container">
-        <Link component={RouterLink} to="/">
+        <Link to="/">
           <img src={Logo} alt="logo-housy" className="img-logo" />
         </Link>
         {' '}
@@ -26,29 +25,28 @@ function NavBar() {
             marginRight: '150px', alignSelf: 'center', color: '#797B7D',
           }}
         >
-          <Link component={RouterLink} to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
+          <Link to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
             <ListItem button style={{ textDecoration: 'none' }}>
               <ListItemText primary="Home" />
             </ListItem>
           </Link>
 
-          <Link component={RouterLink} to="/signup" style={{ color: '#797B7D', textDecoration: 'none' }}>
+          <Link to="/signup" style={{ color: '#797B7D', textDecoration: 'none' }}>
             <ListItem button>
               <ListItemText primary="About" />
             </ListItem>
           </Link>
-          <Link component={RouterLink} to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
+          <Link to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
             <ListItem button>
               <ListItemText primary="Buy" />
             </ListItem>
           </Link>
-          <Link component={RouterLink} to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
+          <Link to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
             <ListItem button>
               <ListItemText primary="Rent" />
             </ListItem>
           </Link>
         </List>
-        {/* </Stack> */}
 
         <div className="agent">
           <Button style={{
@@ -56,12 +54,12 @@ function NavBar() {
           }}
           >
             {' '}
-            <Link component={RouterLink} to="/login" className="btn-host">
+            <Link to="/login" className="btn-host">
               <ListItemText primary="Host my House" style={{ color: '#fff' }} />
             </Link>
           </Button>
           {logged ? (
-            <Link component={RouterLink} to="/">
+            <Link to="/">
               <Avatar src={PresonImg} />
             </Link>
           ) : (
