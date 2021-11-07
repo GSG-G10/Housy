@@ -10,6 +10,7 @@ import MdPhone from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EmailIcon from '@mui/icons-material/Email';
 import { makeStyles } from '@mui/styles';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
   card: {
@@ -26,9 +27,8 @@ const useStyles = makeStyles({
   },
 });
 const contentStyles = { display: 'flex', marginBottom: '15px', alignItems: 'center' };
-function UserContactCard({
-  image, name, location, phone, email,
-}) {
+
+function UserContactCard({ data }) {
   const classes = useStyles();
 
   return (
@@ -36,12 +36,12 @@ function UserContactCard({
 
       <Avatar
         sx={{ bgcolor: colors.green[500], width: 124.02, height: 129.66 }}
-        src={image}
+        src={data.image}
         variant="rounded"
       />
       <CardContent className={classes.card}>
         <Typography gutterBottom variant="h5" component="div">
-          {name}
+          {data.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Building Owner
@@ -52,17 +52,17 @@ function UserContactCard({
 
         <Typography sx={contentStyles} variant="body2" color="text.secondary">
           <LocationOnIcon className={classes.icon} />
-          {location}
+          {data.location}
         </Typography>
 
         <Typography sx={contentStyles} variant="body2" color="text.secondary">
           <MdPhone className={classes.icon} />
-          {phone}
+          {data.phone}
         </Typography>
 
         <Typography sx={contentStyles} variant="body2" color="text.secondary">
           <EmailIcon className={classes.icon} />
-          {email}
+          {data.email}
         </Typography>
 
       </CardContent>
@@ -70,4 +70,15 @@ function UserContactCard({
   );
 }
 
+// Your Code here
+
+UserContactCard.propTypes = {
+  data: PropTypes.shape({
+    image: PropTypes.string,
+    name: PropTypes.string,
+    location: PropTypes.string,
+    phone: PropTypes.string,
+    email: PropTypes.string,
+  }).isRequired,
+};
 export default UserContactCard;
