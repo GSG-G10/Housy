@@ -20,8 +20,10 @@
     text-align: end; 
 }
 .price{
+    font-size: 1.9rem;
     width: 100%;
     text-align: center;
+    margin-top: 5px;
 }
 .bathroom,.rooms,.beds,.sqft{
     width: 45%;

@@ -42,9 +42,11 @@ function PropertyCard({
         <div className="loveicon" style={{ width: '50%' }}>
           <FavoriteBorderIcon />
         </div>
-        <h1 className="price">
+        <div className="price">
           {price}
-        </h1>
+          {' '}
+          $
+        </div>
       </CardContent>
 
       <CardContent className={classes.icons}>
