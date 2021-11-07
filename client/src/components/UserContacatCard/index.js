@@ -70,8 +70,6 @@ function UserContactCard({ data }) {
   );
 }
 
-// Your Code here
-
 UserContactCard.propTypes = {
   data: PropTypes.shape({
     image: PropTypes.string,
@@ -81,4 +79,5 @@ UserContactCard.propTypes = {
     email: PropTypes.string,
   }).isRequired,
 };
+
 export default UserContactCard;
