@@ -12,8 +12,10 @@ module.exports = async (req, res, next) => {
     } = agentSchema.validate(req.body);
     if (error) return res.status(400).json({ message: error.details[0].message });
     const hasedPasword = await hash(password, 10);
-    await signUpQuery(username, email, phone, hasedPasword);
-    const token = await signToken(email, username, phone);
+    const { rows } = await signUpQuery(username, email, phone, hasedPasword);
+    const token = await signToken({
+      email, username, phone, userId: rows[0].id,
+    });
     return res.status(201).cookie('token', token).json({ message: 'user created' });
   } catch (err) {
     if (err.code === '23505') {

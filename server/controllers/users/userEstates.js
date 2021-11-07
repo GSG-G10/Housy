@@ -1,13 +1,15 @@
-const { userEstatesQuery } = require('../../database/quieres/index');
+const { userEstatesQuery, agentQuery } = require('../../database/quieres/index');
 
 const userEstateshandler = async (req, res) => {
   const { userId } = req.params;
 
   try {
     if (userId > 0) {
-      const { rows } = await userEstatesQuery(userId);
+      const { rows: agentData } = await agentQuery(userId);
+      const { rows: estateData } = await userEstatesQuery(userId);
       return res.json({
-        data: rows,
+        agentData,
+        estateData,
       });
     }
     return res.status(404).json({
