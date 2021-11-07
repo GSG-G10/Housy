@@ -1,4 +1,5 @@
 import { BrowserRouter as Router } from 'react-router-dom';
+import PropertyCard from './components/PropertyCard';
 import NavBar from './components/Navbar';
 import { Footer } from './components';
 
