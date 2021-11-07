@@ -28,7 +28,11 @@ const useStyles = makeStyles({
 });
 const contentStyles = { display: 'flex', marginBottom: '15px', alignItems: 'center' };
 
-function UserContactCard({ data }) {
+function UserContactCard({
+  data: {
+    name, phone, image, location, email,
+  },
+}) {
   const classes = useStyles();
 
   return (
@@ -36,12 +40,12 @@ function UserContactCard({ data }) {
 
       <Avatar
         sx={{ bgcolor: colors.green[500], width: 124.02, height: 129.66 }}
-        src={data.image}
+        src={image}
         variant="rounded"
       />
       <CardContent className={classes.card}>
         <Typography gutterBottom variant="h5" component="div">
-          {data.name}
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Building Owner
@@ -52,17 +56,17 @@ function UserContactCard({ data }) {
 
         <Typography sx={contentStyles} variant="body2" color="text.secondary">
           <LocationOnIcon className={classes.icon} />
-          {data.location}
+          {location}
         </Typography>
 
         <Typography sx={contentStyles} variant="body2" color="text.secondary">
           <MdPhone className={classes.icon} />
-          {data.phone}
+          {phone}
         </Typography>
 
         <Typography sx={contentStyles} variant="body2" color="text.secondary">
           <EmailIcon className={classes.icon} />
-          {data.email}
+          {email}
         </Typography>
 
       </CardContent>
