@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
         message: "Agent's data updated successfully",
       });
     }
-    return res.status(404).json({
+    return res.status(400).json({
       message: 'There\'s no Agent, put correct id',
     });
   } catch (err) {
