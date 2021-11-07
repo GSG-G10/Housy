@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node server",
     "dev": "cross-env NODE_ENV=development nodemon server",
-    "test": "cross-env NODE_ENV=test jest",
+    "test": "cross-env NODE_ENV=test jest --runInBand",
     "build:db": "cross-env NODE_ENV=development node server/database/config"
   },
   "repository": {
@@ -30,12 +30,12 @@
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1"
-  },
+    },
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.25.2",
-    "jest": "^27.3.1",
+    "jest": "26.6.0",
     "nodemon": "^2.0.14",
     "pre-commit": "^1.2.2",
     "supertest": "^6.1.6"
