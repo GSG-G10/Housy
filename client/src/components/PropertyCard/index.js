@@ -2,6 +2,7 @@ import {
   Card,
   CardContent,
 } from '@mui/material';
+import PropTypes from 'prop-types';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { makeStyles } from '@mui/styles';
@@ -9,7 +10,6 @@ import Space from '../../assets/space.png';
 import Bath from '../../assets/bath.png';
 import Rooms from '../../assets/rooms.png';
 import Bed from '../../assets/beds.png';
-
 import './PropertyCard.css';
 
 const useStyles = makeStyles({
@@ -26,20 +26,24 @@ const useStyles = makeStyles({
 
   },
 });
-function PropertyCard() {
+function PropertyCard({
+  data: {
+    type, price, beds, baths, rooms, space,
+  },
+}) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card} style={{ backgroundColor: '#F1F1F1' }}>
       <CardContent className="row">
         <div className="rectangle">
-          For sales
+          {type}
         </div>
         <div className="loveicon" style={{ width: '50%' }}>
           <FavoriteBorderIcon />
         </div>
         <h1 className="price">
-          1000000$
+          {price}
         </h1>
       </CardContent>
 
@@ -49,33 +53,49 @@ function PropertyCard() {
             src={Bath}
             alt="space"
           />
-          2 Bathrooms
+          {baths}
+          {' '}
+          Bathrooms
         </div>
         <div className="rooms">
           <img
             src={Rooms}
             alt="space"
           />
-          2 Rooms
+          {rooms}
+          {' '}
+          Rooms
         </div>
         <div className="beds">
           <img
             src={Bed}
             alt="space"
           />
-          23 Beds
+          {beds}
+          {' '}
+          Beds
         </div>
         <div className="sqft">
           <img
             src={Space}
             alt="space"
           />
-
-          1200 Sqft
+          {space}
+          Sqft
         </div>
       </CardContent>
     </Card>
   );
 }
+PropertyCard.propTypes = {
+  data: PropTypes.shape({
+    type: PropTypes.string,
+    price: PropTypes.string,
+    beds: PropTypes.string,
+    baths: PropTypes.string,
+    rooms: PropTypes.string,
+    space: PropTypes.string,
+  }).isRequired,
+};
 
 export default PropertyCard;
