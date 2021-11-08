@@ -1,7 +1,9 @@
 const {
   userEstateshandler, login, putAgent, getAllUsers,
 } = require('./users');
-const { editEstate, deleteEstate, filterEstate } = require('./estates');
+const {
+  editEstate, deleteEstate, filterEstate, getEstate,
+} = require('./estates');
 const logout = require('./logout');
 const { adminLogin } = require('./admins');
 
@@ -15,5 +17,5 @@ module.exports = {
   editEstate,
   putAgent,
   adminLogin,
-
+  getEstate,
 };

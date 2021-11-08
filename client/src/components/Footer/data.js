@@ -42,7 +42,7 @@ const data = [
     ],
   },
   {
-    title: 'contact-us',
+    title: 'Contact us',
     links: [
       {
         href: '/',

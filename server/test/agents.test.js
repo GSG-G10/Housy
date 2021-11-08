@@ -7,7 +7,7 @@ const connection = require('../database/config/connection');
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
-const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEifQ.ABHyuVZkr37lK6lelg18vAFAApbMj6KGTGhEbm9ROg4';
+const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGxwb3J0MEBwYXRjaC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTYzNjExMjAwNH0.o4iDQMffvwmqt47SDb5RifHWBSBK9FyG55cBN_QfcfQ';
 
 describe('Get all users', () => {
   test('get all users', async () => {
@@ -50,47 +50,24 @@ describe('user estates', () => {
       .expect(200)
       .expect('Content-Type', /json/);
     return expect(res.body).toEqual({
-      data: [
+      agentData: [
         {
           id: 3,
-          agent_id: 3,
+          name: 'Allina',
+          email: 'aburford2@tumblr.com',
+          phone: '630-385-8312',
+          avater: null,
+        },
+      ],
+      estateData: [
+        {
+          id: 3,
           title: 'Amazing house in Galilee',
-          price: '847.00',
           description: 'Big beautiful stonehouse with garden and balcony with breathtaking view. A large fireplace and cousy livingroom. A lot of plants and artistic decoration. Harashim lays on top of a mountain in Galilee. Great for relaxing vacation and sightseeing.',
           type: 'sale',
           category: 'villa',
-          street: '0824 Mcguire Way',
-          city: 'Kungshamn',
-          region: 'Galilee',
-          bathrooms: 1,
-          bedrooms: 3,
-          rooms: 3,
-          space: '235',
-          approved: true,
-          rate: '5',
-          available: true,
-        },
-        {
-          id: 6,
-          agent_id: 3,
-          title: 'vestibulum ante ipsum primis',
-          price: '194193.55',
-          description: 'leo odio porttitor id consequat in consequat ut nulla sed',
-          type: 'sale',
-          category: 'whole house',
-          street: '0891 7th Park',
-          city: 'Álimos',
-          region: 'Greece',
-          bathrooms: 1,
-          bedrooms: 3,
-          rooms: 2,
-          space: '174',
-          approved: false,
-          rate: '1',
-          available: false,
         },
       ],
-
     });
   });
 });

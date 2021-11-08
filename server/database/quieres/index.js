@@ -8,6 +8,9 @@ const editEstateQuery = require('./editEstatesQuery');
 const deleteEstateQuery = require('./deleteEstateQuery');
 const filterEstates = require('./filterEstates');
 const signUpAdminQuery = require('./signUpAdminQuery');
+const agentQuery = require('./agentQuery');
+const getImagesQuery = require('./getImagesQuery');
+const getEstateQuery = require('./getEstateQuery');
 
 module.exports = {
   getAllUsersQuery,
@@ -20,4 +23,7 @@ module.exports = {
   deleteEstateQuery,
   filterEstates,
   signUpAdminQuery,
+  agentQuery,
+  getImagesQuery,
+  getEstateQuery,
 };
