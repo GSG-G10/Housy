@@ -24,9 +24,9 @@ function NavBar() {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 800,
+    width: 650,
     bgcolor: 'background.paper',
-    // border: '2px solid #000',
+    borderRadius: 3,
     boxShadow: 24,
     p: 4,
   };
@@ -72,11 +72,9 @@ function NavBar() {
             marginRight: '30px', alignSelf: 'center', backgroundColor: '#3781CB', color: '#FFFFFF', textTransform: 'none',
           }}
           >
-            {' '}
-            {/* <Link to="/login" className="btn-host"> */}
-            {/* <ListItemText primary="Host my House" style={{ color: '#fff' }} /> */}
-            <Button onClick={handleOpen}>Open modal</Button>
-            {/* </Link> */}
+
+            <Button onClick={handleOpen} style={{ color: '#fff', textTransform: 'none' }}>Login</Button>
+
           </Button>
           {logged ? (
             <Link to="/">

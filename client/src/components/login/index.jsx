@@ -1,17 +1,15 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import { useState } from 'react';
 import {
   Grid, Paper, Avatar, TextField, Button, Typography,
 } from '@mui/material';
 import { useHistory, Link } from 'react-router-dom';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Facebook from '../../assets/Iconfacebook.png';
+import Google from '../../assets/Icongoogle.png';
 
 const Login = ({ handleClose, setLogged }) => {
-  // console.log(handleClose);
   const history = useHistory();
   const [data, setData] = useState({ email: '', password: '' });
   const [error, setError] = useState({ email: false, password: false });
@@ -21,20 +19,41 @@ const Login = ({ handleClose, setLogged }) => {
   const { email, password } = data;
 
   const marginBtm = { marginBottom: 10 };
-  const avatarStyle = { backgroundColor: '#1bbd7e' };
   const btnstyle = {
     margin: '8px 0',
     backgroundColor: '#CBA41B',
   };
-  const btnTopstyle = {
+  const loginWithSocialMedia = {
     margin: '8px ',
     backgroundColor: '#2E72DB',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    textTransform: 'none',
   };
-  const box = {
-    border: '1px solid red',
+  const loginWithEmail = {
     width: '50%',
     display: 'flex',
     flexDirection: 'column',
+
+  };
+  const Container = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    boxShadow: 'none',
+
+  };
+  const containerBtn = {
+    width: '90%',
+    display: 'flex',
+    alignItems: 'center',
+
+  };
+  const avatar = {
+    borderRadius: 0,
+    width: '30px',
+    height: '30px',
 
   };
 
@@ -57,7 +76,6 @@ const Login = ({ handleClose, setLogged }) => {
   };
 
   const handleSubmit = (e) => {
-    // console.log('yes');
     e.preventDefault();
     handleError(() => {
       axios.post('/api/v1/user/login', {
@@ -76,24 +94,28 @@ const Login = ({ handleClose, setLogged }) => {
   };
   return (
     <Grid>
-      <Paper>
+      <Paper style={Container}>
         <Grid align="center">
           <h2>Welcome Back</h2>
         </Grid>
-        <Grid display="flex" justifyContent="space-between">
-          <Button type="submit" color="primary" variant="contained" style={btnTopstyle} fullWidth>
+        <Grid style={containerBtn} display="flex" justifyContent="space-between">
+          <Button type="submit" color="primary" variant="contained" style={loginWithSocialMedia} fullWidth>
+            <Avatar alt="Remy Sharp" style={avatar} src={Google} />
+
             Sign in with Google
-            {' '}
-
           </Button>
-          <Button type="submit" color="primary" variant="contained" style={btnTopstyle} fullWidth>
+          <Button type="submit" color="primary" variant="contained" style={loginWithSocialMedia} fullWidth>
+            <Avatar alt="Remy Sharp" style={avatar} src={Facebook} />
             Sign in with Facebook
-
           </Button>
 
         </Grid>
-        <Grid align="center" style={box}>
-
+        <Grid align="center">
+          <Typography style={{ color: '#696969' }}>
+            OR
+          </Typography>
+        </Grid>
+        <Grid style={loginWithEmail}>
           <TextField
             label="email"
             placeholder="Enter email"
@@ -111,7 +133,6 @@ const Login = ({ handleClose, setLogged }) => {
             placeholder="Enter password"
             type="password"
             name="password"
-            fullWidth
             required
             error={!!error.password}
             onChange={handleChange}
@@ -121,17 +142,15 @@ const Login = ({ handleClose, setLogged }) => {
           <Typography style={{ color: 'red' }}>
             {LoginError}
           </Typography>
-          {/* <Link to="/"> */}
           <Button type="submit" color="primary" variant="contained" style={btnstyle} onClick={handleSubmit} fullWidth>Sign in</Button>
-          {/* </Link> */}
-          <Typography>
-            <Link to="/">
-              Forgot password ?
-            </Link>
-          </Typography>
+          {/* <Typography> */}
+          <Link to="/" style={{ color: '#696969', textDecoration: 'none' }}>
+            Forgot password ?
+          </Link>
+          {/* </Typography> */}
           <Typography>
             Do you have an account ?
-            <Link to="/singup">
+            <Link to="/singup" style={{ textDecoration: 'none' }}>
               Sign Up
             </Link>
           </Typography>
