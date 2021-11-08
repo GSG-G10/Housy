@@ -1,8 +1,9 @@
 import Typography from '@mui/material/Typography';
+import PropTypes from 'prop-types';
 import Search from '../Search';
 import './style.css';
 
-function SearchSection() {
+function SearchSection({ handleSearch }) {
   return (
     <>
       <div className="search-section">
@@ -10,7 +11,7 @@ function SearchSection() {
           <Typography gutterBottom variant="h2" component="div">
             What are you looking for ?
           </Typography>
-          <Search />
+          <Search handleSearch={handleSearch} />
         </div>
       </div>
     </>
@@ -18,3 +19,6 @@ function SearchSection() {
 }
 
 export default SearchSection;
+SearchSection.propTypes = {
+  handleSearch: PropTypes.func.isRequired,
+};

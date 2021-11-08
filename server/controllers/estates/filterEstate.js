@@ -10,6 +10,7 @@ module.exports = async (req, res, next) => {
     const { rows } = await filterEstates({
       type, category, location, price, roomNumbers, bathRooms, space,
     });
+
     res.json({
       data: rows,
     });

@@ -1,23 +1,21 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SearchSection, CardsSection } from '../components/SearchPgComponent';
 
 function ResultSearch() {
-  const [search] = useState('');
+  // const [search] = useState({
+  //   type: '',
+  //   category: '',
+  //   location: '',
+  //   price: '',
+  //   roomNumbers: '',
+  //   bathRooms: '',
+  //   space: '',
+  // });
   const [searchResult, setSearchResult] = useState([]);
-  useEffect(() => {
-    const getSearchResult = async () => {
-      const result = await axios.get(
-        'api/v1/estate/search',
-      );
-      setSearchResult(result.data.data);
-    };
-    getSearchResult();
-  }, [search]);
   return (
     <>
-      <SearchSection />
-      <CardsSection estates={searchResult} />
+      <SearchSection handleSearch={setSearchResult} />
+      <CardsSection estates={searchResult} handleSearch={setSearchResult} />
     </>
   );
 }
