@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
-import PresonImg from '../../../assetes/avatar.png';
+import PresonImg from '../../../asstes/avatar.png';
 
 const AgentInfo = ({
   name, email, phone, avater,

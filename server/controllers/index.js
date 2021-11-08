@@ -1,8 +1,21 @@
-const { userEstateshandler, login } = require('./users');
-const getAllUsers = require('./users/getAllUsers');
-const { editEstate, deleteEstate } = require('./estates');
+const {
+  userEstateshandler, login, putAgent, getAllUsers,
+} = require('./users');
+const {
+  editEstate, deleteEstate, filterEstate, getEstate,
+} = require('./estates');
 const logout = require('./logout');
+const { adminLogin } = require('./admins');
 
 module.exports = {
-  getAllUsers, userEstateshandler, logout, login, deleteEstate, editEstate,
+  filterEstate,
+  getAllUsers,
+  userEstateshandler,
+  logout,
+  login,
+  deleteEstate,
+  editEstate,
+  putAgent,
+  adminLogin,
+  getEstate,
 };

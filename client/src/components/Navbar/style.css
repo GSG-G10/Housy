@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.img-logo {
+  width: 90px;
+  height: 80px;
+}
+.list {
+  display: flex;
+  align-self: center;
+}
+.agent {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}

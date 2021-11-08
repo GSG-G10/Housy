@@ -18,9 +18,9 @@ const AgentProfile = () => {
 
   useEffect(() => {
     const getData = async () => {
-      await axios.get(`/api/v1/users/${userId}/estates`)
+      await axios.get(`/api/v1/user/${userId}/estates`)
         .then((res) => {
-          setData(res.data.data);
+          setData([res.data]);
         })
         .catch((err) => {
           setError(err);
@@ -29,8 +29,6 @@ const AgentProfile = () => {
     getData();
   }, [userId]);
 
-  console.log('ssss', data);
-  console.log(error);
   return (
 
     <Container maxWidth="xl">
@@ -38,10 +36,10 @@ const AgentProfile = () => {
         data.length
           ? (
             <AgentInfo
-              name={data[0].name}
-              email={data[0].email}
-              phone={data[0].phone}
-              avater={data[0].avater}
+              name={data[0].agentData[0].name}
+              email={data[0].agentData[0].email}
+              phone={data[0].agentData[0].phone}
+              avater={data[0].agentData[0].avater}
             />
           )
           : 'loading'
