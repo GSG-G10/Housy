@@ -1,21 +1,14 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-// import PropertyCard from './components/PropertyCard';
-// import NavBar from './components/Navbar';
-// import { Footer } from './components';
-import Estate from './pages/Estate';
+import NavBar from './components/Navbar';
+import { Footer } from './components';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Estate />
-
-      </Router>
-      {/* <Router>
         <NavBar />
-
+        <Footer />
       </Router>
-      <Footer /> */}
     </div>
 
   );
