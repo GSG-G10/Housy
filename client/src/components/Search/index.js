@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 import { Container, Button, TextField } from '@mui/material';
 import { marker, money, room } from '../../assets';
+=======
+>>>>>>> bd9b5bfc5e4604324830c85f38b4d2402a280d6a
 import './style.css';
 
 function Search() {
   return (
+<<<<<<< HEAD
     <Container maxWidth="xl">
       <div className="search-container">
         <Button variant="contained" size="medium" className="btn active-search">
@@ -61,6 +65,11 @@ function Search() {
 
       </div>
     </Container>
+=======
+    <div>
+      Hello
+    </div>
+>>>>>>> bd9b5bfc5e4604324830c85f38b4d2402a280d6a
   );
 }
 
