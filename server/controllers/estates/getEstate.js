@@ -8,13 +8,11 @@ module.exports = async (req, res, next) => {
     });
   }
   try {
-    const { rowCount, rows } = await getEstateQuery(estateId);
-    const images = await getImagesQuery(rows[0].id);
-
+    const { rowCount, rows: estateData } = await getEstateQuery(estateId);
+    const { rows: imagesData } = await getImagesQuery(estateId);
     if (rowCount > 0) {
       return res.json({
-        data: rows,
-        images: images.rows,
+        data: { ...estateData, images: [...imagesData] },
       });
     }
     return res.status(400).json({
