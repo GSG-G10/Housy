@@ -2,15 +2,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ListItem, ListItemText, Button, Avatar, Container, List,
+  ListItemText, Button, Avatar, Container, List,
 } from '@mui/material';
 import './style.css';
 
 import Logo from '../../asstes/logo.png';
 import PresonImg from '../../asstes/avatar.png';
+import LinkComponent from '../common/LinkComponent';
 
 function NavBar() {
-  const [logged, setLogged] = useState(true);
   return (
     <Container maxWidth="xl">
       <nav className="container">
@@ -25,27 +25,11 @@ function NavBar() {
             marginRight: '150px', alignSelf: 'center', color: '#797B7D',
           }}
         >
-          <Link to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
-            <ListItem button style={{ textDecoration: 'none' }}>
-              <ListItemText primary="Home" />
-            </ListItem>
-          </Link>
+          <LinkComponent to="/" name="Home" />
+          <LinkComponent to="/about" name="About" />
+          <LinkComponent to="/buy" name="Buy" />
+          <LinkComponent to="/rent" name="Rent" />
 
-          <Link to="/signup" style={{ color: '#797B7D', textDecoration: 'none' }}>
-            <ListItem button>
-              <ListItemText primary="About" />
-            </ListItem>
-          </Link>
-          <Link to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
-            <ListItem button>
-              <ListItemText primary="Buy" />
-            </ListItem>
-          </Link>
-          <Link to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
-            <ListItem button>
-              <ListItemText primary="Rent" />
-            </ListItem>
-          </Link>
         </List>
 
         <div className="agent">
@@ -58,13 +42,11 @@ function NavBar() {
               <ListItemText primary="Host my House" style={{ color: '#fff' }} />
             </Link>
           </Button>
-          {logged ? (
-            <Link to="/">
-              <Avatar src={PresonImg} />
-            </Link>
-          ) : (
-            ''
-          )}
+
+          <Link to="/">
+            <Avatar src={PresonImg} />
+          </Link>
+
         </div>
 
       </nav>
