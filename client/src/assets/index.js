@@ -1,5 +1,5 @@
 export { default as marker } from './marker.svg';
-export { default as money } from './money.svg';
+export { default as money } from './money.png';
 export { default as room } from './Solid.svg';
 export { default as bath } from './bath.png';
 export { default as beds } from './beds.png';

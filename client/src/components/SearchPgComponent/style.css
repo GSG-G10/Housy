@@ -25,6 +25,8 @@
     width: 9rem;
     background: #f0f0f0;
     margin-right:0.5rem;
+    height: 25rem;
+    border-radius: 5px;
 }
 .filter-wrapper .css-1vw6mcs-MuiTypography-root{
     font-weight: 750;
@@ -52,7 +54,9 @@
 .filter-wrapper .css-sghohy-MuiButtonBase-root-MuiButton-root{
     text-transform: capitalize;
     border-radius: 5rem;
-    padding: 6px 30px;
+    padding: 6px 25px;
+    display: flex;
+    margin: 0 auto;
 }
 .cards-section-wrapper {
     width: 100%;
@@ -86,16 +90,7 @@
     padding: 0 4px;
     cursor: pointer;
 }
-/* .group::before {
-    content: " ";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    left: 15px;
-    bottom: 0px;
-    background: #CCCCCC;
-    border-radius: 50%;
-} */
+
 
 
 

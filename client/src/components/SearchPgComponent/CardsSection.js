@@ -1,19 +1,16 @@
 import PropTypes from 'prop-types';
 import CardHouse from '../CardHouse';
 import FilterComponent from './FilterSide';
-
 import './style.css';
 
-function CardsSection({ estates }) {
-  console.log(estates);
+function CardsSection({ estates, handleSearch }) {
   return (
     <div className="cards-section-wrapper">
-      <FilterComponent />
+      <FilterComponent handleSearch={handleSearch} />
       <section className="cards-section">
         {
-
           estates.length ? estates.map((estate) => (
-            <CardHouse key={estate.id} estate={estate} />
+            estate.available && <CardHouse key={estate.id} estate={estate} />
           )) : 'Loading ....'
         }
       </section>
@@ -22,6 +19,7 @@ function CardsSection({ estates }) {
 }
 CardsSection.propTypes = {
   estates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default CardsSection;

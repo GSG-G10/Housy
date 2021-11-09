@@ -10,7 +10,7 @@ function Search({ handleSearch }) {
     location: '',
     price: '',
     roomNumbers: '',
-    type: '',
+    type: 'rent',
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ function Search({ handleSearch }) {
         <Button
           variant="contained"
           size="medium"
-          className="btn active-search"
+          className={`btn ${search.type === 'rent' ? 'active-search' : ''}`}
           onClick={() => setSearch({
             ...search,
             type: 'rent',
@@ -42,7 +42,7 @@ function Search({ handleSearch }) {
         <Button
           variant="contained"
           size="medium"
-          className="btn"
+          className={`btn ${search.type === 'sale' ? 'active-search' : ''}`}
           onClick={() => setSearch({
             ...search,
             type: 'sale',

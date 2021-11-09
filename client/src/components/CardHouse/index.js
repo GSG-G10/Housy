@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IconButton from '@mui/material/IconButton';
 import PropTypes from 'prop-types';
+// import { Link } from 'react-router-dom';
 import truncateFun from '../../utils/truncateFun';
 import
 {
@@ -22,16 +23,18 @@ export default function MediaCard({
     rooms,
     space,
     type,
+    // id,
   },
 }) {
   return (
     <>
       <Card className="card-house" sx={{ maxWidth: 250 }}>
+        {/* <Link to={`/estate/${id}`}> */}
         <CardMedia
           component="img"
           height="140"
           image={image}
-          alt="green iguana"
+          alt={title}
         />
         <div className="card-type">
           For
@@ -59,7 +62,7 @@ export default function MediaCard({
         <div className="card-details">
           <div className="row">
             <div className="col">
-              <img src={couch} alt="number room" />
+              <img src={couch} alt="number rooms" />
               <span>
                 {rooms}
                 RM
@@ -88,7 +91,7 @@ export default function MediaCard({
             </div>
           </div>
         </div>
-
+        {/* </Link> */}
       </Card>
     </>
   );
@@ -96,22 +99,14 @@ export default function MediaCard({
 
 MediaCard.propTypes = {
   estate: PropTypes.shape({
-  // id: PropTypes.number.isRequired,
-  // agent_id: PropTypes.number.isRequired,
+    // id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    // category: PropTypes.string.isRequired,
-    // street: PropTypes.string.isRequired,
-    // city: PropTypes.string.isRequired,
-    // region: PropTypes.string.isRequired,
     bathrooms: PropTypes.number.isRequired,
     bedrooms: PropTypes.number.isRequired,
     rooms: PropTypes.number.isRequired,
     space: PropTypes.number.isRequired,
-  // approved: PropTypes.bool.isRequired,
-  // rate: PropTypes.number.isRequired,
-  // available: PropTypes.bool.isRequired,
   }).isRequired,
 };
