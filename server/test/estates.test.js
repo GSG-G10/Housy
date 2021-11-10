@@ -88,3 +88,69 @@ describe('user estates', () => {
     return expect(res.body.message).toBe('Estate updated successfully');
   });
 });
+
+test('api/v1/estate/search ', async () => {
+  const res = await supertest(app)
+    .get('/api/v1/estate/search?type=rent')
+    .expect(200)
+    .expect('Content-Type', /json/);
+  return expect(res.body.data).toEqual([
+    {
+      id: 2,
+      agent_id: 1,
+      title: 'Decorated house',
+      price: '242.89',
+      description: 'A unique private house with a high wooden ceiling, wide and lit spaces, a yard house surrounded by plants and fruit trees, seating and grass corners. In addition, the house contains games for children of various ages(box games, table tennis, etc.) The house is located in a carriage on a quiet street and within walking distance to a commercial center that Kemer kept open on Saturday as well as for recreational areas ("artists stables")',
+      type: 'rent',
+      category: 'apartment',
+      street: '100 Butternut Hill',
+      city: 'Bern',
+      region: 'Switzerland',
+      bathrooms: 1,
+      bedrooms: 2,
+      rooms: 2,
+      space: '226',
+      approved: true,
+      rate: '5',
+      available: true,
+    },
+    {
+      id: 4,
+      agent_id: 2,
+      title: 'Ecologic mud house facing Mt Tabor',
+      price: '106.71',
+      description: 'n the pastoral KIBUTZ Beit Keshet you will find our special ecologic mud house. The house is 130 sqm, with a large garden facing Mt Tabor. 5 min walk will take you to the forest, 25 min driving you will be in the sea of galilee.',
+      type: 'rent',
+      category: 'villa',
+      street: '15918 Mcguire Point',
+      city: 'Ranong',
+      region: 'Thailand',
+      bathrooms: 2,
+      bedrooms: 4,
+      rooms: 4,
+      space: '244',
+      approved: true,
+      rate: '1',
+      available: true,
+    },
+    {
+      id: 5,
+      agent_id: 2,
+      title: 'in faucibus orci luctus',
+      price: '116162.27',
+      description: 'parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum',
+      type: 'rent',
+      category: 'villa',
+      street: '898 Dixon Crossing',
+      city: 'Gelap',
+      region: 'Indonesia',
+      bathrooms: 3,
+      bedrooms: 2,
+      rooms: 4,
+      space: '150',
+      approved: false,
+      rate: '3',
+      available: false,
+    },
+  ]);
+});
