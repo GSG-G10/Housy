@@ -1,12 +1,23 @@
-import { Footer } from './components';
+import { BrowserRouter as Router } from 'react-router-dom';
+// import PropertyCard from './components/PropertyCard';
+// import NavBar from './components/Navbar';
+// import { Footer } from './components';
+import Estate from './pages/Estate';
 
 function App() {
   return (
     <div className="App">
-      <Footer />
+      <Router>
+        <Estate />
+
+      </Router>
+      {/* <Router>
+        <NavBar />
+
+      </Router>
+      <Footer /> */}
     </div>
 
   );
 }
-
 export default App;
