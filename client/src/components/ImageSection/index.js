@@ -1,8 +1,11 @@
+import PropTypes from 'prop-types';
 import './imageSection.css';
 
-function ImageSection({ arr }) {
-  const mainImage = arr[0];
-  const images = arr.slice(1);
+function ImageSection({ images }) {
+  let imagesarr = Object.values(images);
+  const mainImage = imagesarr[0];
+  console.log(imagesarr);
+  imagesarr = imagesarr.slice(1);
   return (
     <section className="main">
       <section className="bigImage">
@@ -13,7 +16,7 @@ function ImageSection({ arr }) {
         />
       </section>
       <section className="anotherImage">
-        {images.map((item) => (
+        {imagesarr.map((item) => (
           <img
             src={item}
             alt="home"
@@ -24,5 +27,7 @@ function ImageSection({ arr }) {
     </section>
   );
 }
-
+ImageSection.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 export default ImageSection;

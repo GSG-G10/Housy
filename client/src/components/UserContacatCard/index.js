@@ -21,6 +21,8 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     padding: '10px',
+    width: '24rem',
+    height: '30rem',
   },
   icon: {
     marginRight: '0.5rem',
