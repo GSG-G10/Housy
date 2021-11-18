@@ -6,11 +6,30 @@ import {
 } from '@mui/material';
 import './style.css';
 
-import Logo from '../../asstes/logo.png';
-import PresonImg from '../../asstes/avatar.png';
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
+import Login from '../login';
+import Logo from '../../assets/logo.png';
+import PresonImg from '../../assets/avatar.png';
 import LinkComponent from '../common/LinkComponent';
 
 function NavBar() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 650,
+    bgcolor: 'background.paper',
+    borderRadius: 3,
+    boxShadow: 24,
+    p: 4,
+  };
   return (
     <Container maxWidth="xl">
       <nav className="container">
@@ -37,10 +56,9 @@ function NavBar() {
             marginRight: '30px', alignSelf: 'center', backgroundColor: '#3781CB', color: '#FFFFFF', textTransform: 'none',
           }}
           >
-            {' '}
-            <Link to="/login" className="btn-host">
-              <ListItemText primary="Host my House" style={{ color: '#fff' }} />
-            </Link>
+
+            <Button onClick={handleOpen} style={{ color: '#fff', textTransform: 'none' }}>Login</Button>
+
           </Button>
 
           <Link to="/">
@@ -50,6 +68,23 @@ function NavBar() {
         </div>
 
       </nav>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <Box sx={style}>
+            <Login handleClose={handleClose} />
+          </Box>
+        </Fade>
+      </Modal>
     </Container>
 
   );
