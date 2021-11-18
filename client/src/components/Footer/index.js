@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <section className="footer">
       <AppBar
-        position="fixed"
+        position="static  "
         color="primary"
         sx={{ top: 'auto', bottom: 0 }}
         style={{
