@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ListItem, ListItemText, Button, Avatar, Container, List,
+  ListItemText, Button, Avatar, Container, List,
 } from '@mui/material';
 import './style.css';
 
@@ -11,11 +11,11 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Login from '../login';
-import Logo from '../../asstes/logo.png';
-import PresonImg from '../../asstes/avatar.png';
+import Logo from '../../assets/logo.png';
+import PresonImg from '../../assets/avatar.png';
+import LinkComponent from '../common/LinkComponent';
 
 function NavBar() {
-  const [logged, setLogged] = useState(false);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -44,27 +44,11 @@ function NavBar() {
             marginRight: '150px', alignSelf: 'center', color: '#797B7D',
           }}
         >
-          <Link to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
-            <ListItem button style={{ textDecoration: 'none' }}>
-              <ListItemText primary="Home" />
-            </ListItem>
-          </Link>
+          <LinkComponent to="/" name="Home" />
+          <LinkComponent to="/about" name="About" />
+          <LinkComponent to="/buy" name="Buy" />
+          <LinkComponent to="/rent" name="Rent" />
 
-          <Link to="/signup" style={{ color: '#797B7D', textDecoration: 'none' }}>
-            <ListItem button>
-              <ListItemText primary="About" />
-            </ListItem>
-          </Link>
-          <Link to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
-            <ListItem button>
-              <ListItemText primary="Buy" />
-            </ListItem>
-          </Link>
-          <Link to="/" style={{ color: '#797B7D', textDecoration: 'none' }}>
-            <ListItem button>
-              <ListItemText primary="Rent" />
-            </ListItem>
-          </Link>
         </List>
 
         <div className="agent">
@@ -76,13 +60,11 @@ function NavBar() {
             <Button onClick={handleOpen} style={{ color: '#fff', textTransform: 'none' }}>Login</Button>
 
           </Button>
-          {logged ? (
-            <Link to="/">
-              <Avatar src={PresonImg} />
-            </Link>
-          ) : (
-            ''
-          )}
+
+          <Link to="/">
+            <Avatar src={PresonImg} />
+          </Link>
+
         </div>
 
       </nav>
@@ -99,7 +81,7 @@ function NavBar() {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Login setLogged={setLogged} handleClose={handleClose} />
+            <Login handleClose={handleClose} />
           </Box>
         </Fade>
       </Modal>
