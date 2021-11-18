@@ -1,10 +1,14 @@
-import ResultSearch from './pages/resultSearch';
+import { BrowserRouter as Router } from 'react-router-dom';
+import NavBar from './components/Navbar';
+import { Footer } from './components';
+// import Login from './components/login';
 
 function App() {
   return (
-    <div className="App">
-      <ResultSearch />
-    </div>
+    <Router>
+      <NavBar />
+      <Footer />
+    </Router>
   );
 }
 export default App;
