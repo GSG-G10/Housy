@@ -1,0 +1,74 @@
+.row{
+    display: flex;
+    justify-content: space-between;
+       
+}
+.card-house{
+    position: relative;
+}
+.card-house .css-r40f8v-MuiTypography-root{
+    font-size: .5rem;
+    color: #5F828C;
+    height: 3.5rem;
+}
+
+.card-house .css-1mktp8m-MuiTypography-root {
+    font-size: 1.3rem;
+    font-weight: 750;
+    overflow: hidden;
+    display: block;
+    letter-spacing: 0px;
+    height: 2.8rem;
+}
+.card-house .css-1vw6mcs-MuiTypography-root{
+    color: #3781CB;
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin:0
+}
+.card-details img{
+   width:1em;
+    height:1em;
+    margin-right: .2rem;
+}
+.card-details .row{
+     justify-content: space-around;
+     padding-bottom: 1rem;
+}
+.card-details .row .col {
+    display: flex;
+    font-family: "Roboto";
+    border: 1px solid #ececed; 
+    padding: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+    background: #ECECED;
+    font-weight: 600;
+    align-items: center;
+}
+.card-details .row div span {
+    font-size: .6rem;
+}
+.card-house .css-o69gx8-MuiCardMedia-root{
+    height: 10rem;
+    position: relative;
+}
+.card-type{
+    position: absolute;
+    top: 12px;
+    left: 8px;
+    background: #fff;
+    color: #3781CB;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    text-transform: capitalize;
+    font-size: 14px;
+}
+.card-house .css-46bh2p-MuiCardContent-root {
+    padding: 16px;
+    height: 11.5rem
+}
+.cards-section .css-103chds-MuiPaper-root-MuiCard-root {
+    margin-bottom: 1rem;
+}

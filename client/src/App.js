@@ -5,13 +5,10 @@ import { Footer } from './components';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <NavBar />
-        <Footer />
-      </Router>
-    </div>
-
+    <Router>
+      <NavBar />
+      <Footer />
+    </Router>
   );
 }
 export default App;

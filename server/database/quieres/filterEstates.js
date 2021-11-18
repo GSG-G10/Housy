@@ -15,7 +15,7 @@ module.exports = ({
     values.push(category);
   }
   if (location) {
-    text += `location = $${values.length + 1} AND `;
+    text += `city = $${values.length + 1} AND `;
     values.push(location);
   }
   if (price) {
